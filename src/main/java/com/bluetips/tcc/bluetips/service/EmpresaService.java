@@ -101,7 +101,7 @@ public class EmpresaService {
 				empresaRepository.deleteById(id);
 				return "Empresa removida com sucesso!!!";
 			}catch(Exception erro) {
-				throw new RuntimeException("Erro a tentar deletar uma empresa");
+				throw new RuntimeException("Erro ao tentar deletar uma empresa");
 			}	
 		}
 		
