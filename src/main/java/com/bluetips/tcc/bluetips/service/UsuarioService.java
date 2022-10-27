@@ -33,6 +33,7 @@ public class UsuarioService {
 		usuarioEntity.setEmail(request.getEmail());
 		usuarioEntity.setSenha(request.getSenha());
 		usuarioEntity.setCep(request.getCep());
+		usuarioEntity.setLogradouro(request.getLogradouro());
 		usuarioEntity.setBairro(request.getBairro());
 		usuarioEntity.setCidade(request.getCidade());
 		usuarioEntity.setUf(request.getUf());
@@ -77,6 +78,7 @@ public class UsuarioService {
 		usuarioEntity.setEmail(request.getEmail());
 		usuarioEntity.setSenha(request.getSenha());
 		usuarioEntity.setCep(request.getCep());
+		usuarioEntity.setLogradouro(request.getLogradouro());
 		usuarioEntity.setBairro(request.getBairro());
 		usuarioEntity.setCidade(request.getCidade());
 		usuarioEntity.setUf(request.getUf());
