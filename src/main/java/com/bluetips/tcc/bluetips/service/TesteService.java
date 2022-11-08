@@ -1,5 +1,6 @@
 package com.bluetips.tcc.bluetips.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -25,16 +26,11 @@ public class TesteService {
 		testeRepository.save(tabelaUsuario);
 	}
 
-	public String download(Long idDoUsuario) {
+	public List<TesteEntity> download() {
 
-		Optional<TesteEntity> usuarioProcurado = testeRepository.findById(idDoUsuario);
-		if(usuarioProcurado.isPresent()){
-			TesteEntity tabelaUsuario = usuarioProcurado.get();
-			String fotoBase64 = tabelaUsuario.getFotoBase64();
-			return fotoBase64;
-		}else{
-			return "Usuario não encontrado";
-		}
+		List<TesteEntity> lista = testeRepository.findAll();
+		return lista;
+		
 	}
 
 }
