@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bluetips.tcc.bluetips.domain.CriaEmpresaRequest;
 import com.bluetips.tcc.bluetips.domain.CriaEmpresaResponse;
@@ -106,5 +108,23 @@ public class EmpresaService {
 		}
 		
 	}
+	
+	//IMAGEM UPLOAD E DOWNLOAD
+	public void upload(MultipartFile file) throws Exception {
+		byte[] image = Base64.encodeBase64(file.getBytes());
+		String imagemBase64 = new String(image);
+		EmpresaEntity tabelaEmpresa = new EmpresaEntity();
+		tabelaEmpresa.setFotoBase64(imagemBase64);
+		// este sÃ© nosso insert na tabela Empresa:
+		empresaRepository.save(tabelaEmpresa);
+	}
+
+	public List<EmpresaEntity> download() {
+
+		List<EmpresaEntity> lista = empresaRepository.findAll();
+		return lista;
+		
+	}
+	
 	
 }
