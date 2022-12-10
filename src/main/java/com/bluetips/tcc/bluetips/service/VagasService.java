@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bluetips.tcc.bluetips.domain.CriaVagasRequest;
 import com.bluetips.tcc.bluetips.domain.CriaVagasResponse;
+import com.bluetips.tcc.bluetips.entity.EmpresaEntity;
 import com.bluetips.tcc.bluetips.entity.VagasEntity;
 import com.bluetips.tcc.bluetips.repository.VagasRepository;
 
@@ -29,6 +32,10 @@ public class VagasService {
 		vagasEntity.setQtda(request.getQtda());
 		vagasEntity.setSalario(request.getSalario());
 		vagasEntity.setEscolaridade(request.getEscolaridade());
+		vagasEntity.setArea(request.getArea());
+		vagasEntity.setExigencias(request.getExigencias());
+		vagasEntity.setValorizado(request.getValorizado());
+		vagasEntity.setContrato(request.getContrato());
 		vagasEntity.setSobre(request.getSobre());
 		vagasEntity.setCnpj(request.getCnpj());
 		vagasEntity.setSenha(request.getSenha());
@@ -78,6 +85,10 @@ public class VagasService {
 		vagasEntity.setQtda(request.getQtda());
 		vagasEntity.setSalario(request.getSalario());
 		vagasEntity.setEscolaridade(request.getEscolaridade());
+		vagasEntity.setArea(request.getArea());
+		vagasEntity.setExigencias(request.getExigencias());
+		vagasEntity.setValorizado(request.getValorizado());
+		vagasEntity.setContrato(request.getContrato());
 		vagasEntity.setSobre(request.getSobre());
 		vagasEntity.setCnpj(request.getCnpj());
 		vagasEntity.setSenha(request.getSenha());
@@ -108,18 +119,22 @@ public class VagasService {
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//IMAGEM UPLOAD E DOWNLOAD
+		public void upload(MultipartFile file) throws Exception {
+			byte[] image = Base64.encodeBase64(file.getBytes());
+			String imagemBase64 = new String(image);
+			VagasEntity tabelaVagas = new VagasEntity();
+			tabelaVagas.setFotoBase64(imagemBase64);
+			// este sÃ© nosso insert na tabela Empresa:
+			vagasRepository.save(tabelaVagas);
+		}
+
+		public List<VagasEntity> download() {
+
+			List<VagasEntity> lista = vagasRepository.findAll();
+			return lista;
+			
+		}
 	
 	
 	

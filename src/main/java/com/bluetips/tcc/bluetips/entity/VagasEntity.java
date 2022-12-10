@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 
 @Entity(name="tabela_Vagas")
@@ -18,6 +19,14 @@ public class VagasEntity {
 	private String qtda;
 	private String salario;
 	private String escolaridade;
+	
+	//-- NEW
+	private String area;
+	private String exigencias;
+	private String valorizado;
+	private String contrato;
+	//--
+	
 	private String sobre;
 	private String cnpj;
 	private String senha;
@@ -30,6 +39,16 @@ public class VagasEntity {
 	private String cidade;
 	//FIM DO OBJETO ENDERECO
 	
+	@Lob
+	private String fotoBase64;
+	
+	
+	public String getFotoBase64() {
+		return fotoBase64;
+	}
+	public void setFotoBase64(String fotoBase64) {
+		this.fotoBase64 = fotoBase64;
+	}
 	
 	public String getId() {
 		return id;
@@ -116,5 +135,32 @@ public class VagasEntity {
 		this.cidade = cidade;
 	}
 	
+	//NEW
+	
+		public String getArea() {
+			return area;
+		}
+		public void setArea(String area) {
+			this.area = area;
+		}
+		public String getExigencias() {
+			return exigencias;
+		}
+		public void setExigencias(String exigencias) {
+			this.exigencias = exigencias;
+		}
+		public String getValorizado() {
+			return valorizado;
+		}
+		public void setValorizado(String valorizado) {
+			this.valorizado = valorizado;
+		}
+		public String getContrato() {
+			return contrato;
+		}
+		public void setContrato(String contrato) {
+			this.contrato = contrato;
+		}
+		
 	
 }

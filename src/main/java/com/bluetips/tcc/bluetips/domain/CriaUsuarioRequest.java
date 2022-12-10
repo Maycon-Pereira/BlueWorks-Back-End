@@ -1,5 +1,6 @@
 package com.bluetips.tcc.bluetips.domain;
 
+import javax.persistence.Lob;
 
 public class CriaUsuarioRequest {
 
@@ -19,6 +20,18 @@ public class CriaUsuarioRequest {
 	private String cidade;
 	private String uf;
 	//FIM DO OBJETO ENDERECO
+	
+	@Lob
+	private String fotoBase64;
+	
+	public String getFotoBase64() {
+		return fotoBase64;
+	}
+	public void setFotoBase64(String fotoBase64) {
+		this.fotoBase64 = fotoBase64;
+	}
+	
+	
 	
 	public String getNome() {
 		return nome;

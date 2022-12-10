@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bluetips.tcc.bluetips.domain.CriaUsuarioRequest;
 import com.bluetips.tcc.bluetips.domain.CriaUsuarioResponse;
+import com.bluetips.tcc.bluetips.entity.EmpresaEntity;
 import com.bluetips.tcc.bluetips.entity.UsuarioEntity;
 import com.bluetips.tcc.bluetips.repository.UsuarioRepository;
 
@@ -105,15 +108,22 @@ public class UsuarioService {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//IMAGEM UPLOAD E DOWNLOAD
+		public void upload(MultipartFile file) throws Exception {
+			byte[] image = Base64.encodeBase64(file.getBytes());
+			String imagemBase64 = new String(image);
+			UsuarioEntity tabelaUsuario = new UsuarioEntity();
+			tabelaUsuario.setFotoBase64(imagemBase64);
+			// este sÃ© nosso insert na tabela Empresa:
+			usuarioRepository.save(tabelaUsuario);
+		}
+
+		public List<UsuarioEntity> download() {
+
+			List<UsuarioEntity> lista = usuarioRepository.findAll();
+			return lista;
+			
+		}
 	
 	
 	
