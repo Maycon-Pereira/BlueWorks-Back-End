@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bluetips.tcc.bluetips.domain.CriaVagasRequest;
 import com.bluetips.tcc.bluetips.domain.CriaVagasResponse;
-import com.bluetips.tcc.bluetips.entity.EmpresaEntity;
 import com.bluetips.tcc.bluetips.entity.VagasEntity;
 import com.bluetips.tcc.bluetips.service.VagasService;
 
@@ -78,15 +77,5 @@ public class VagasController {
 		return response;
 		
 		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

@@ -22,6 +22,8 @@ public class UsuarioEntity {
 	private String email;
 	private String senha;
 	
+	//experiencia add
+	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
 	private String cep;
 	private String logradouro;

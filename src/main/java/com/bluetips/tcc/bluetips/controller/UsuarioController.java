@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bluetips.tcc.bluetips.domain.CriaUsuarioRequest;
 import com.bluetips.tcc.bluetips.domain.CriaUsuarioResponse;
-import com.bluetips.tcc.bluetips.entity.EmpresaEntity;
 import com.bluetips.tcc.bluetips.entity.UsuarioEntity;
 import com.bluetips.tcc.bluetips.service.UsuarioService;
 
@@ -66,10 +65,10 @@ public class UsuarioController {
 	
 	//IMAGEM UPLOAD E DOWNLOAD
 	
-	@PostMapping("/v2/image/upload")
-	public ResponseEntity<Void> upload(@RequestParam MultipartFile file) throws Exception {
+	@PostMapping("/v2/image/upload/{id}")
+	public ResponseEntity<Void> upload(@RequestParam MultipartFile file, @PathVariable String id) throws Exception {
 		
-		usuarioService.upload(file);
+		usuarioService.upload(file, id);
 		return ResponseEntity.accepted().build();
 	}
 	
