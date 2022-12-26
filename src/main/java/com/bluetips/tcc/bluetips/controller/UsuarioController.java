@@ -56,6 +56,12 @@ public class UsuarioController {
 		return response;
 	}
 	
+	@PutMapping("/darLikeEmUsuario/{idUsuario}/{nomeEmpresa}")
+	public ResponseEntity<Void> darLikeEmUsuario(@PathVariable String idUsuario, @PathVariable String nomeEmpresa) {
+		usuarioService.darLikeEmUsuario(idUsuario, nomeEmpresa); 
+		return ResponseEntity.ok().build();
+	}
+	
 	@DeleteMapping("{id}")
 	public String removeUsuario(@PathVariable String id) {
 		

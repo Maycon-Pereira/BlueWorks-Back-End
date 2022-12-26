@@ -119,21 +119,28 @@ public class VagasService {
 	}
 	
 	//IMAGEM UPLOAD E DOWNLOAD
-		public void upload(MultipartFile file) throws Exception {
-			byte[] image = Base64.encodeBase64(file.getBytes());
-			String imagemBase64 = new String(image);
-			VagasEntity tabelaVagas = new VagasEntity();
-			tabelaVagas.setFotoBase64(imagemBase64);
-			// este sÃ© nosso insert na tabela Empresa:
-			vagasRepository.save(tabelaVagas);
-		}
+			public void upload(MultipartFile file, String id) throws Exception {
+				Optional<VagasEntity> procurado = vagasRepository.findById(id);
+				
+				if(!procurado.isPresent()) {
+					throw new RuntimeException("usuario não encontrado");
+				}
+				VagasEntity vagasEntity = procurado.get();
+				
+				
+				byte[] image = Base64.encodeBase64(file.getBytes());
+				String imagemBase64 = new String(image);
+				vagasEntity.setFotoBase64(imagemBase64);
+				// este sÃ© nosso insert na tabela Empresa:
+				vagasRepository.save(vagasEntity);
+			}
 
-		public List<VagasEntity> download() {
+			public List<VagasEntity> download() {
 
-			List<VagasEntity> lista = vagasRepository.findAll();
-			return lista;
-			
-		}
+				List<VagasEntity> lista = vagasRepository.findAll();
+				return lista;
+				
+			}
 	
 	
 	

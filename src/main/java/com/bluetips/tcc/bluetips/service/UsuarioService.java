@@ -90,6 +90,34 @@ public class UsuarioService {
 		return saved;
 	}
 	
+public void darLikeEmUsuario(String idUsuario, String nomeEmpresa) {
+		
+		Optional<UsuarioEntity> procurado = usuarioRepository.findById(idUsuario);
+		if(!procurado.isPresent()) {
+			throw new RuntimeException("usuario não encontrado");
+		}
+		
+		UsuarioEntity usuarioEntity = procurado.get();
+		usuarioEntity.setEmpresaDeuLike(true);
+		
+		String nomes = this.concatenaNomesEmpresa(usuarioEntity.getNomeEmpresas(), nomeEmpresa);
+		
+		usuarioEntity.setNomeEmpresas(nomes);
+		
+		usuarioRepository.save(usuarioEntity);
+	}
+	
+	private String concatenaNomesEmpresa(String nomeEmpresaAtual, String novoNomeEmpresa) {
+		
+		StringBuilder sb = new StringBuilder();
+		if(nomeEmpresaAtual != null) {
+			sb.append(nomeEmpresaAtual);
+			sb.append(',');			
+		}
+		sb.append(novoNomeEmpresa);
+		return sb.toString();
+	}
+	
 	public String removeUsuario(String id) {
 		
 		UsuarioEntity procurado = this.buscaUsuarioPorId(id);
@@ -116,7 +144,6 @@ public class UsuarioService {
 			}
 			UsuarioEntity usuarioEntity = procurado.get();
 			
-			
 			byte[] image = Base64.encodeBase64(file.getBytes());
 			String imagemBase64 = new String(image);
 			usuarioEntity.setFotoBase64(imagemBase64);
@@ -130,7 +157,6 @@ public class UsuarioService {
 			return lista;
 			
 		}
-	
 	
 	
 }

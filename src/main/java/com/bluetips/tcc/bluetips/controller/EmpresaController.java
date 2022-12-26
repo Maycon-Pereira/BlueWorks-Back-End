@@ -66,10 +66,10 @@ public class EmpresaController {
 	
 	//IMAGEM UPLOAD E DOWNLOAD
 	
-	@PostMapping("/v2/image/upload")
-	public ResponseEntity<Void> upload(@RequestParam MultipartFile file) throws Exception {
+	@PostMapping("/v2/image/upload/{id}")
+	public ResponseEntity<Void> upload(@RequestParam MultipartFile file, @PathVariable String id) throws Exception {
 		
-		empresaService.upload(file);
+		empresaService.upload(file, id);
 		return ResponseEntity.accepted().build();
 	}
 	
@@ -80,11 +80,5 @@ public class EmpresaController {
 		return response;
 		
 		}
-	
-	
-	
-	
-	
-	
 
 }

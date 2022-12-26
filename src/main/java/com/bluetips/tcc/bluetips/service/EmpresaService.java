@@ -110,13 +110,19 @@ public class EmpresaService {
 	}
 	
 	//IMAGEM UPLOAD E DOWNLOAD
-	public void upload(MultipartFile file) throws Exception {
+	public void upload(MultipartFile file, String id) throws Exception {
+		Optional<EmpresaEntity> procurado = empresaRepository.findById(id);
+
+		if(!procurado.isPresent()) {
+			throw new RuntimeException("empresa não encontrada");
+		}
+		EmpresaEntity empresaEntity = procurado.get();
+		
 		byte[] image = Base64.encodeBase64(file.getBytes());
 		String imagemBase64 = new String(image);
-		EmpresaEntity tabelaEmpresa = new EmpresaEntity();
-		tabelaEmpresa.setFotoBase64(imagemBase64);
+		empresaEntity.setFotoBase64(imagemBase64);
 		// este sÃ© nosso insert na tabela Empresa:
-		empresaRepository.save(tabelaEmpresa);
+		empresaRepository.save(empresaEntity);
 	}
 
 	public List<EmpresaEntity> download() {

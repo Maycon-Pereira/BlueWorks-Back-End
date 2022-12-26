@@ -32,6 +32,9 @@ public class UsuarioEntity {
 	private String uf;
 	//FIM DO OBJETO ENDERECO
 	
+	private boolean empresaDeuLike;
+	private String nomeEmpresas;
+	
 	@Lob
 	private String fotoBase64;
 	
@@ -41,6 +44,19 @@ public class UsuarioEntity {
 	}
 	public void setFotoBase64(String fotoBase64) {
 		this.fotoBase64 = fotoBase64;
+	}
+	
+	public boolean isEmpresaDeuLike() {
+		return empresaDeuLike;
+	}
+	public void setEmpresaDeuLike(boolean empresaDeuLike) {
+		this.empresaDeuLike = empresaDeuLike;
+	}
+	public String getNomeEmpresas() {
+		return nomeEmpresas;
+	}
+	public void setNomeEmpresas(String nomeEmpresas) {
+		this.nomeEmpresas = nomeEmpresas;
 	}
 	
 	public String getId() {

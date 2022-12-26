@@ -63,10 +63,10 @@ public class VagasController {
 		return response;
 	}
 	
-	@PostMapping("/v2/image/upload")
-	public ResponseEntity<Void> upload(@RequestParam MultipartFile file) throws Exception {
+	@PostMapping("/v2/image/upload/{id}")
+	public ResponseEntity<Void> upload(@RequestParam MultipartFile file, @PathVariable String id) throws Exception {
 		
-		vagasService.upload(file);
+		vagasService.upload(file, id);
 		return ResponseEntity.accepted().build();
 	}
 	
