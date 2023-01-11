@@ -2,7 +2,10 @@ package com.bluetips.tcc.bluetips.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +31,10 @@ public class EmpresaController {
 	@Autowired// CRUD EMPRESA
 	private EmpresaService empresaService;
 	
-	@PostMapping
-	public CriaEmpresaResponse criaEmpesa(@RequestBody CriaEmpresaRequest request) {
+	@PostMapping(
+			consumes = MediaType.APPLICATION_JSON_VALUE, 
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public CriaEmpresaResponse criaEmpesa(@Valid @RequestBody CriaEmpresaRequest request) {
 		
 		CriaEmpresaResponse response = empresaService.criaEmpesa(request);
 		

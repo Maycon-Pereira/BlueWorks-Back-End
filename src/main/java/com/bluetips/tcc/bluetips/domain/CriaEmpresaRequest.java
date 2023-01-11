@@ -1,18 +1,30 @@
 package com.bluetips.tcc.bluetips.domain;
 
 import javax.persistence.Lob;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class CriaEmpresaRequest {
 
+	@NotEmpty
 	private String nome;
+	
+	@NotEmpty
+	@Size(min=14, max=14)
 	private String cnpj;
+	
 	private String porte;
+	
 	private String sobre;
 	private String telefone;
 	private String email;
+	
+	@Size(min=8, max=20)
 	private String senha;
 	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
+	
+	@Size(min=8, max=8)
 	private String cep;
 	private String logradouro;
 	private String bairro;
@@ -20,7 +32,7 @@ public class CriaEmpresaRequest {
 	private String cidade;
 	//FIM DO OBJETO ENDERECO
 	
-	@Lob
+	//@Lob
 	private String fotoBase64;
 	
 	public String getFotoBase64() {
