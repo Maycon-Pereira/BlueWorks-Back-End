@@ -1,38 +1,54 @@
 package com.bluetips.tcc.bluetips.domain;
 
 import javax.persistence.Lob;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class CriaEmpresaRequest {
 
-	@NotEmpty
+	@NotEmpty(message="O nome não pode estar vazio.")
 	private String nome;
 	
-	@NotEmpty
-	@Size(min=14, max=14)
+	@NotEmpty(message="O CNPJ não pode estar vazio.")
+	@Pattern(regexp = "\\d{18}")
 	private String cnpj;
 	
+	@NotEmpty(message="O Porte da Empresa não pode estar vazio.")
 	private String porte;
 	
+	@NotEmpty(message="O Sobre da Empresa não pode estar vazio.")
 	private String sobre;
+	
+	//
 	private String telefone;
+	
+	
+	@NotEmpty(message="O Email não pode estar vazio.")
+	@Email
 	private String email;
 	
+	@NotEmpty(message="A senha não pode estar vazio.")
 	@Size(min=8, max=20)
 	private String senha;
 	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
 	
-	@Size(min=8, max=8)
+	@NotNull
+	@Pattern(regexp = "\\d{8}")
 	private String cep;
+	
 	private String logradouro;
 	private String bairro;
 	private String uf;
 	private String cidade;
 	//FIM DO OBJETO ENDERECO
 	
-	//@Lob
+	
+	
+	@Lob
 	private String fotoBase64;
 	
 	public String getFotoBase64() {

@@ -31,9 +31,7 @@ public class EmpresaController {
 	@Autowired// CRUD EMPRESA
 	private EmpresaService empresaService;
 	
-	@PostMapping(
-			consumes = MediaType.APPLICATION_JSON_VALUE, 
-			produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping
 	public CriaEmpresaResponse criaEmpesa(@Valid @RequestBody CriaEmpresaRequest request) {
 		
 		CriaEmpresaResponse response = empresaService.criaEmpesa(request);

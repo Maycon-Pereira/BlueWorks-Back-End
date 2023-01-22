@@ -12,4 +12,12 @@ public class ApiErro {
 		String dataAtualFormatada = FormatacaoDataUtil.getDataAtualFormatada();
 		this.timestamp = dataAtualFormatada;
 	}
+
+	public Map<String, String> getErros() {
+		return erros;
+	}
+
+	public String getTimestamp() {
+		return timestamp;
+	}
 }
