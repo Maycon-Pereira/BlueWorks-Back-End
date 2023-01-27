@@ -26,7 +26,6 @@ import com.bluetips.tcc.bluetips.service.EmpresaService;
 @RequestMapping("/empresa")
 public class EmpresaController {
 
-	
 	@Autowired// CRUD EMPRESA
 	private EmpresaService empresaService;
 	

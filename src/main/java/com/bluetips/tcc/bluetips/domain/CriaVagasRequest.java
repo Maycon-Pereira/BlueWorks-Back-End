@@ -1,29 +1,61 @@
 package com.bluetips.tcc.bluetips.domain;
 
 import javax.persistence.Lob;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class CriaVagasRequest {
 	
+	@NotEmpty(message="O nome não pode estar vazio.")
 	private String nome;
+	
+	@NotEmpty(message="O tipo não pode estar vazio.")
 	private String tipo;
+	
+	@NotNull(message="A qtda nao pode ser vazio")
 	private String qtda;
+	
+	@NotEmpty(message="A data não pode estar vazio.")
 	private String data;
+	
+	@NotNull(message="O salario não pode estar vazio.")
 	private String salario;
+	
+	@NotEmpty(message="A escolaridade não pode estar vazio.")
 	private String escolaridade;
 	
-	//-- NEW
+	//-- Especializacao !
+	@NotEmpty(message="A area não pode estar vazio.")
 	private String area;
+	
+	@NotEmpty(message="As exigencias não pode estar vazio.")
 	private String exigencias;
+	
 	private String valorizado;
+	
+	@NotEmpty(message="O contrato não pode estar vazio.")
 	private String contrato;
 	//--
 	
+	@NotEmpty(message="O Sobre não pode estar vazio.")
 	private String sobre;
+	
+	@NotEmpty(message="O CNPJ não pode estar vazio.")
+	@Pattern(regexp = "\\d{18}")
 	private String cnpj;
+	
+	@NotEmpty(message="A senha não pode estar vazio.")
+	@Size(min=8, max=20)
 	private String senha;
 	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
+	
+	@NotNull(message="O CPF não pode estar vazio.")
+	@Pattern(regexp = "\\d{8}")
 	private String cep;
+	
 	private String logradouro;
 	private String bairro;
 	private String uf;

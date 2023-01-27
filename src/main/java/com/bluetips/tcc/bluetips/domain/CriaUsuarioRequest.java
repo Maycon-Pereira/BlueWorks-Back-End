@@ -1,20 +1,47 @@
 package com.bluetips.tcc.bluetips.domain;
 
 import javax.persistence.Lob;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class CriaUsuarioRequest {
 
+	@NotEmpty(message="O nome não pode estar vazio.")
 	private String nome;
+	
+	@NotEmpty(message="O CPF não pode estar vazio.")
+	@Pattern(regexp = "\\d{11}")
 	private String cpf;
+	
+	@NotEmpty(message="A escolaridade não pode estar vazio.")
 	private String escolaridade;
+	
+	@NotEmpty(message="A data não pode estar vazio.")
 	private String data; //data de nascimento
+	
+	@NotEmpty(message="O Sobre não pode estar vazio.")
 	private String sobre;
+	
+	//
 	private String telefone;
+	
+	@NotEmpty(message="O Email não pode estar vazio.")
+	@Email
 	private String email;
+	
+	@NotEmpty(message="A senha não pode estar vazio.")
+	@Size(min=8, max=20)
 	private String senha;
 	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
+	
+	@NotNull
+	@Pattern(regexp = "\\d{8}")
 	private String cep;
+	
 	private String logradouro;
 	private String bairro;
 	private String cidade;

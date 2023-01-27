@@ -2,6 +2,8 @@ package com.bluetips.tcc.bluetips.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,7 +30,7 @@ public class VagasController {
 	private VagasService vagasService;
 	
 	@PostMapping
-	public CriaVagasResponse criaVagas(@RequestBody CriaVagasRequest request) {
+	public CriaVagasResponse criaVagas(@Valid @RequestBody CriaVagasRequest request) {
 		
 		CriaVagasResponse response = vagasService.criaVagas(request);
 		

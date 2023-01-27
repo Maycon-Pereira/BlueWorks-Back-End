@@ -16,10 +16,10 @@ public class CriaEmpresaRequest {
 	@Pattern(regexp = "\\d{18}")
 	private String cnpj;
 	
-	@NotEmpty(message="O Porte da Empresa não pode estar vazio.")
+	@NotEmpty(message="O Porte não pode estar vazio.")
 	private String porte;
 	
-	@NotEmpty(message="O Sobre da Empresa não pode estar vazio.")
+	@NotEmpty(message="O Sobre não pode estar vazio.")
 	private String sobre;
 	
 	//
@@ -36,7 +36,7 @@ public class CriaEmpresaRequest {
 	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
 	
-	@NotNull
+	@NotNull(message="O CPF não pode estar vazio.")
 	@Pattern(regexp = "\\d{8}")
 	private String cep;
 	
