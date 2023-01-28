@@ -13,7 +13,7 @@ public class CriaEmpresaRequest {
 	private String nome;
 	
 	@NotEmpty(message="O CNPJ não pode estar vazio.")
-	@Pattern(regexp = "\\d{18}")
+	@Pattern(regexp = "\\d{14}")
 	private String cnpj;
 	
 	@NotEmpty(message="O Porte não pode estar vazio.")
