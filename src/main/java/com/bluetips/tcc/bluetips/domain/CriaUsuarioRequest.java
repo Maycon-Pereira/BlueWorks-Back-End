@@ -13,7 +13,7 @@ public class CriaUsuarioRequest {
 	private String nome;
 	
 	@NotEmpty(message="O CPF não pode estar vazio.")
-	@Pattern(regexp = "\\d{11}")
+	@Size(min=14, max=14)
 	private String cpf;
 	
 	@NotEmpty(message="A escolaridade não pode estar vazio.")
@@ -39,7 +39,7 @@ public class CriaUsuarioRequest {
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
 	
 	@NotNull
-	@Pattern(regexp = "\\d{8}")
+	@Size(min=9, max=9)
 	private String cep;
 	
 	private String logradouro;

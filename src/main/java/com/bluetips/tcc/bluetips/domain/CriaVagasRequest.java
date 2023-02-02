@@ -43,7 +43,7 @@ public class CriaVagasRequest {
 	private String sobre;
 	
 	@NotEmpty(message="O CNPJ não pode estar vazio.")
-	@Pattern(regexp = "\\d{14}")
+	@Size(min=18, max=18)
 	private String cnpj;
 	
 	@NotEmpty(message="A senha não pode estar vazio.")
@@ -53,7 +53,7 @@ public class CriaVagasRequest {
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
 	
 	@NotNull(message="O CPF não pode estar vazio.")
-	@Pattern(regexp = "\\d{8}")
+	@Size(min=9, max=9)
 	private String cep;
 	
 	private String logradouro;
