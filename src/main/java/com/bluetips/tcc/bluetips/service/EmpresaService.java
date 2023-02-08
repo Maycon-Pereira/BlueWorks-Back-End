@@ -33,6 +33,7 @@ public class EmpresaService {
 		empresaEntity.setTelefone(request.getTelefone());
 		empresaEntity.setEmail(request.getEmail());
 		empresaEntity.setSenha(request.getSenha());
+		empresaEntity.setConfirmSenha(request.getConfirmSenha());
 		empresaEntity.setCep(request.getCep());
 		empresaEntity.setLogradouro(request.getLogradouro());
 		empresaEntity.setBairro(request.getBairro());
@@ -81,6 +82,7 @@ public class EmpresaService {
 		empresaEntity.setTelefone(request.getTelefone());
 		empresaEntity.setEmail(request.getEmail());
 		empresaEntity.setSenha(request.getSenha());
+		empresaEntity.setConfirmSenha(request.getConfirmSenha());
 		empresaEntity.setCep(request.getCep());
 		empresaEntity.setLogradouro(request.getLogradouro());
 		empresaEntity.setBairro(request.getBairro());

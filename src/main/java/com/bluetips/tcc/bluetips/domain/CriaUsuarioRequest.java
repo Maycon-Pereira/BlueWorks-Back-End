@@ -4,7 +4,6 @@ import javax.persistence.Lob;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class CriaUsuarioRequest {
@@ -13,7 +12,7 @@ public class CriaUsuarioRequest {
 	private String nome;
 	
 	@NotEmpty(message="O CPF não pode estar vazio.")
-	@Size(min=14, max=14)
+	@Size(min=11, max=11)
 	private String cpf;
 	
 	@NotEmpty(message="A escolaridade não pode estar vazio.")
@@ -36,10 +35,14 @@ public class CriaUsuarioRequest {
 	@Size(min=8, max=20)
 	private String senha;
 	
+	@Size(min=8, max=20)
+	@NotEmpty(message="As senhas devem ser compativeis.")
+	private String confirmSenha;
+	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
 	
 	@NotNull
-	@Size(min=9, max=9)
+	@Size(min=8, max=8)
 	private String cep;
 	
 	private String logradouro;
@@ -107,6 +110,12 @@ public class CriaUsuarioRequest {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public String getConfirmSenha() {
+		return confirmSenha;
+	}
+	public void setConfirmSenha(String confirmSenha) {
+		this.confirmSenha = confirmSenha;
 	}
 	public String getCep() {
 		return cep;

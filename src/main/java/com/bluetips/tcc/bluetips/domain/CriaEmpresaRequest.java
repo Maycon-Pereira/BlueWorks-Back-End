@@ -4,7 +4,6 @@ import javax.persistence.Lob;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class CriaEmpresaRequest {
@@ -13,7 +12,7 @@ public class CriaEmpresaRequest {
 	private String nome;
 	
 	@NotEmpty(message="O CNPJ não pode estar vazio.")
-	@Size(min=18, max=18)
+	@Size(min=14, max=14)
 	private String cnpj;
 	
 	@NotEmpty(message="O Porte não pode estar vazio.")
@@ -34,10 +33,14 @@ public class CriaEmpresaRequest {
 	@Size(min=8, max=20)
 	private String senha;
 	
+	@NotEmpty(message="As senhas devem ser compativeis.")
+	@Size(min=8, max=20)
+	private String confirmSenha;
+	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
 	
 	@NotNull(message="O CPF não pode estar vazio.")
-	@Size(min=9, max=9)
+	@Size(min=8, max=8)
 	private String cep;
 	
 	private String logradouro;
@@ -101,6 +104,12 @@ public class CriaEmpresaRequest {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public String getConfirmSenha() {
+		return confirmSenha;
+	}
+	public void setConfirmSenha(String confirmSenha) {
+		this.confirmSenha = confirmSenha;
 	}
 	public String getCep() {
 		return cep;

@@ -34,6 +34,7 @@ public class UsuarioService {
 		usuarioEntity.setTelefone(request.getTelefone());
 		usuarioEntity.setEmail(request.getEmail());
 		usuarioEntity.setSenha(request.getSenha());
+		usuarioEntity.setConfirmSenha(request.getConfirmSenha());
 		usuarioEntity.setCep(request.getCep());
 		usuarioEntity.setLogradouro(request.getLogradouro());
 		usuarioEntity.setBairro(request.getBairro());
@@ -79,6 +80,7 @@ public class UsuarioService {
 		usuarioEntity.setTelefone(request.getTelefone());
 		usuarioEntity.setEmail(request.getEmail());
 		usuarioEntity.setSenha(request.getSenha());
+		usuarioEntity.setConfirmSenha(request.getConfirmSenha());
 		usuarioEntity.setCep(request.getCep());
 		usuarioEntity.setLogradouro(request.getLogradouro());
 		usuarioEntity.setBairro(request.getBairro());

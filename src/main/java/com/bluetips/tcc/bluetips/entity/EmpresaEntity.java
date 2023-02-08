@@ -20,6 +20,7 @@ public class EmpresaEntity {
 	private String telefone;
 	private String email;
 	private String senha;
+	private String confirmSenha;
 	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
 	private String cep;
@@ -87,6 +88,12 @@ public class EmpresaEntity {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public String getConfirmSenha() {
+		return confirmSenha;
+	}
+	public void setConfirmSenha(String confirmSenha) {
+		this.confirmSenha = confirmSenha;
 	}
 	public String getCep() {
 		return cep;

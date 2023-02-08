@@ -3,7 +3,6 @@ package com.bluetips.tcc.bluetips.domain;
 import javax.persistence.Lob;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class CriaVagasRequest {
@@ -14,13 +13,14 @@ public class CriaVagasRequest {
 	@NotEmpty(message="O tipo não pode estar vazio.")
 	private String tipo;
 	
-	@NotNull(message="A qtda nao pode ser vazio")
+	@Size(min=1)
 	private String qtda;
 	
 	@NotEmpty(message="A data não pode estar vazio.")
 	private String data;
 	
-	@NotNull(message="O salario não pode estar vazio.")
+	
+	@Size(min=3)
 	private String salario;
 	
 	@NotEmpty(message="A escolaridade não pode estar vazio.")
@@ -43,7 +43,7 @@ public class CriaVagasRequest {
 	private String sobre;
 	
 	@NotEmpty(message="O CNPJ não pode estar vazio.")
-	@Size(min=18, max=18)
+	@Size(min=14, max=14)
 	private String cnpj;
 	
 	@NotEmpty(message="A senha não pode estar vazio.")
@@ -53,7 +53,7 @@ public class CriaVagasRequest {
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
 	
 	@NotNull(message="O CPF não pode estar vazio.")
-	@Size(min=9, max=9)
+	@Size(min=8, max=8)
 	private String cep;
 	
 	private String logradouro;
