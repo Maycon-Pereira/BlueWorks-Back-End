@@ -43,6 +43,7 @@ public class VagasController {
 		List<VagasEntity> response = vagasService.listaTodasVagas();		
 		return response;
 	}
+
 	
 	@GetMapping("/{id}")
 	public VagasEntity buscaVagasPorId(@PathVariable String id) {

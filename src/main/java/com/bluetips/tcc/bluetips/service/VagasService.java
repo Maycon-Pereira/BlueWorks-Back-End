@@ -142,10 +142,6 @@ public class VagasService {
 				List<VagasEntity> lista = vagasRepository.findAll();
 				return lista;
 				
-			}
-	
-	
-	
-	
+			}	
 	
 }
