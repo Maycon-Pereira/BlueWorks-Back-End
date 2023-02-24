@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bluetips.tcc.bluetips.domain.CriaVagasRequest;
 import com.bluetips.tcc.bluetips.domain.CriaVagasResponse;
+import com.bluetips.tcc.bluetips.domain.DeletaVagaResponse;
 import com.bluetips.tcc.bluetips.entity.VagasEntity;
 import com.bluetips.tcc.bluetips.service.VagasService;
 
@@ -60,10 +62,15 @@ public class VagasController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public String removeVagas(@PathVariable String id) {
+	public ResponseEntity<DeletaVagaResponse> removeVagas(@PathVariable String id) {
 		
-		String response = vagasService.removeVagas(id);
-		return response;
+		DeletaVagaResponse response = vagasService.removeVagas(id);
+		
+		
+		if(response.isDeletado()) {
+			return new ResponseEntity<>(response, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
 	}
 	
 	@PostMapping("/v2/image/upload/{id}")

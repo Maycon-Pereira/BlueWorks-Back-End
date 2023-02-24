@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bluetips.tcc.bluetips.domain.CriaEmpresaRequest;
 import com.bluetips.tcc.bluetips.domain.CriaEmpresaResponse;
+import com.bluetips.tcc.bluetips.domain.DeletaEmpresaResponse;
 import com.bluetips.tcc.bluetips.entity.EmpresaEntity;
 import com.bluetips.tcc.bluetips.repository.EmpresaRepository;
 
@@ -95,18 +96,24 @@ public class EmpresaService {
 		return saved;
 	}
 	
-	public String removeEmpresa(String id) {
+	public DeletaEmpresaResponse removeEmpresa(String id) {
 		
+		DeletaEmpresaResponse deletaEmpresaResponse = new DeletaEmpresaResponse();
 		EmpresaEntity procurado = this.buscaEmpesaPorId(id);
 		if(procurado == null) {
-			return "Empresa não encontrada";
+			deletaEmpresaResponse.setMensagem("Empresa não encontrada");
+			deletaEmpresaResponse.setDeletado(false);
+			return deletaEmpresaResponse;
 		}else {
 			try {
 				empresaRepository.deleteById(id);
-				return "Empresa removida com sucesso!!!";
+				
+				deletaEmpresaResponse.setMensagem("Empresa removida com sucesso!!!");
+				deletaEmpresaResponse.setDeletado(true);
+				return deletaEmpresaResponse;
 			}catch(Exception erro) {
-				throw new RuntimeException("Erro ao tentar deletar uma empresa");
-			}	
+				throw new RuntimeException("Erro ao tentar remover uma Empresa");
+			}
 		}
 		
 	}

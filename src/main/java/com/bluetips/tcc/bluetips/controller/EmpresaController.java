@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bluetips.tcc.bluetips.domain.CriaEmpresaRequest;
 import com.bluetips.tcc.bluetips.domain.CriaEmpresaResponse;
+import com.bluetips.tcc.bluetips.domain.DeletaEmpresaResponse;
 import com.bluetips.tcc.bluetips.entity.EmpresaEntity;
 import com.bluetips.tcc.bluetips.service.EmpresaService;
 
@@ -59,10 +61,14 @@ public class EmpresaController {
 	}
 
 	@DeleteMapping("/{id}")
-	public String removeEmpresa(@PathVariable String id) {
+	public ResponseEntity<DeletaEmpresaResponse> removeEmpresa(@PathVariable String id) {
 		
-		String response = empresaService.removeEmpresa(id);
-		return response;
+		DeletaEmpresaResponse response = empresaService.removeEmpresa(id);
+		
+		if(response.isDeletado()) {
+			return new ResponseEntity<>(response, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
 	}
 	
 	//IMAGEM UPLOAD E DOWNLOAD

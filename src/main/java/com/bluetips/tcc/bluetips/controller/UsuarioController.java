@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bluetips.tcc.bluetips.domain.CriaUsuarioRequest;
 import com.bluetips.tcc.bluetips.domain.CriaUsuarioResponse;
+import com.bluetips.tcc.bluetips.domain.DeleteUsuarioResponse;
 import com.bluetips.tcc.bluetips.entity.UsuarioEntity;
 import com.bluetips.tcc.bluetips.service.UsuarioService;
 
@@ -65,10 +67,14 @@ public class UsuarioController {
 	}
 	
 	@DeleteMapping("{id}")
-	public String removeUsuario(@PathVariable String id) {
+	public ResponseEntity<DeleteUsuarioResponse> removeUsuario(@PathVariable String id) {
 		
-		String response = usuarioService.removeUsuario(id);
-		return response;
+		DeleteUsuarioResponse response = usuarioService.removeUsuario(id);
+		
+		if(response.isDeletado()) {
+			return new ResponseEntity<>(response, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
 	}
 	
 	//IMAGEM UPLOAD E DOWNLOAD

@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bluetips.tcc.bluetips.domain.CriaVagasRequest;
 import com.bluetips.tcc.bluetips.domain.CriaVagasResponse;
+import com.bluetips.tcc.bluetips.domain.DeletaVagaResponse;
 import com.bluetips.tcc.bluetips.entity.VagasEntity;
 import com.bluetips.tcc.bluetips.repository.VagasRepository;
 
@@ -104,17 +105,23 @@ public class VagasService {
 		return saved;
 	}
 	
-	public String removeVagas(String id) {
+	public DeletaVagaResponse removeVagas(String id) {
 		
+		DeletaVagaResponse deletaVagaResponse = new DeletaVagaResponse();
 		VagasEntity procurado = this.buscaVagasPorId(id);
 		if(procurado == null) {
-			return "Vaga não encontrada";
+			deletaVagaResponse.setMensagem("Vaga não encontrada");
+			deletaVagaResponse.setDeletado(false);
+			return deletaVagaResponse;
 		}else {
 			try {
 				vagasRepository.deleteById(id);
-				return "Vaga removida com sucesso!!!";
+				
+				deletaVagaResponse.setMensagem("Vaga removida com sucesso!!!");
+				deletaVagaResponse.setDeletado(true);
+				return deletaVagaResponse;
 			}catch(Exception erro) {
-				throw new RuntimeException("Erro ao tentar deletar uma vaga");
+				throw new RuntimeException("Erro ao tentar remover uma vaga");
 			}
 		}
 		

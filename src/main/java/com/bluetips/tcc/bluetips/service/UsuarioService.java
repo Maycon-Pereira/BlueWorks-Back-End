@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bluetips.tcc.bluetips.domain.CriaUsuarioRequest;
 import com.bluetips.tcc.bluetips.domain.CriaUsuarioResponse;
+import com.bluetips.tcc.bluetips.domain.DeleteUsuarioResponse;
 import com.bluetips.tcc.bluetips.entity.UsuarioEntity;
 import com.bluetips.tcc.bluetips.repository.UsuarioRepository;
 
@@ -120,17 +121,23 @@ public void darLikeEmUsuario(String idUsuario, String nomeEmpresa) {
 		return sb.toString();
 	}
 	
-	public String removeUsuario(String id) {
+	public DeleteUsuarioResponse removeUsuario(String id) {
 		
+		DeleteUsuarioResponse deleteUsuarioResponse = new DeleteUsuarioResponse();
 		UsuarioEntity procurado = this.buscaUsuarioPorId(id);
 		if(procurado == null) {
-			return "Usuario não encontrado";
+			deleteUsuarioResponse.setMensagem("Usuario não encontrada");
+			deleteUsuarioResponse.setDeletado(false);
+			return deleteUsuarioResponse;
 		}else {
 			try {
 				usuarioRepository.deleteById(id);
-				return "Usuario Removido com sucesso!!!";
+				
+				deleteUsuarioResponse.setMensagem("Usuario removido com sucesso!!!");
+				deleteUsuarioResponse.setDeletado(true);
+				return deleteUsuarioResponse;
 			}catch(Exception erro) {
-				throw new RuntimeException("Erro ao tentar deletar um usuario!");
+				throw new RuntimeException("Erro ao tentar remover um usuario!");
 			}
 		}
 		
