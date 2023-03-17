@@ -109,7 +109,42 @@ public void darLikeEmUsuario(String idUsuario, String nomeEmpresa) {
 		
 		usuarioRepository.save(usuarioEntity);
 	}
+
+public void naodarLikeEmUsuario(String idUsuario, String nomeEmpresa) {
 	
+	Optional<UsuarioEntity> procurado = usuarioRepository.findById(idUsuario);
+	if(!procurado.isPresent()) {
+		throw new RuntimeException("usuario não encontrado");
+	}
+	
+	UsuarioEntity usuarioEntity = procurado.get();
+	usuarioEntity.setEmpresaDeuLike(false);
+	
+	String nomes = this.concatenaNomesEmpresa(usuarioEntity.getNomeEmpresas(), nomeEmpresa);
+	
+	usuarioEntity.setNomeEmpresas(nomes);
+	
+	usuarioRepository.save(usuarioEntity);
+}
+	
+public void dispensarUsuario(String idUsuario, String nomeEmpresa) {
+	
+	Optional<UsuarioEntity> procurado = usuarioRepository.findById(idUsuario);
+	if(!procurado.isPresent()) {
+		throw new RuntimeException("usuario não encontrado");
+	}
+	
+	UsuarioEntity usuarioEntity = procurado.get();
+	usuarioEntity.setUsuarioDipensado(true);
+	
+	String nomes = this.concatenaNomesEmpresa(usuarioEntity.getNomeEmpresas(), nomeEmpresa);
+	
+	usuarioEntity.setNomeEmpresas(nomes);
+	
+	usuarioRepository.save(usuarioEntity);
+}
+
+
 	private String concatenaNomesEmpresa(String nomeEmpresaAtual, String novoNomeEmpresa) {
 		
 		StringBuilder sb = new StringBuilder();

@@ -33,7 +33,10 @@ public class UsuarioEntity {
 	private String uf;
 	//FIM DO OBJETO ENDERECO
 	
+	
 	private boolean empresaDeuLike;
+	private boolean usuarioDipensado;
+	
 	private String nomeEmpresas;
 	
 	@Lob
@@ -151,6 +154,11 @@ public class UsuarioEntity {
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
-	
+	public boolean isUsuarioDipensado() {
+		return usuarioDipensado;
+	}
+	public void setUsuarioDipensado(boolean usuarioDipensado) {
+		this.usuarioDipensado = usuarioDipensado;
+	}
 	
 }

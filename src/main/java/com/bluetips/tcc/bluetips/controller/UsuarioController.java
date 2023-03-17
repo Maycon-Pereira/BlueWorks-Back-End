@@ -66,6 +66,18 @@ public class UsuarioController {
 		return ResponseEntity.ok().build();
 	}
 	
+	@PutMapping("/naodarLikeEmUsuario/{idUsuario}/{nomeEmpresa}")
+	public ResponseEntity<Void> naodarLikeEmUsuario(@PathVariable String idUsuario, @PathVariable String nomeEmpresa) {
+		usuarioService.naodarLikeEmUsuario(idUsuario, nomeEmpresa); 
+		return ResponseEntity.ok().build();
+	}
+	
+	@PutMapping("/dispensarUsuario/{idUsuario}/{nomeEmpresa}")
+	public ResponseEntity<Void> dispensarUsuario(@PathVariable String idUsuario, @PathVariable String nomeEmpresa) {
+		usuarioService.dispensarUsuario(idUsuario, nomeEmpresa); 
+		return ResponseEntity.ok().build();
+	}
+	
 	@DeleteMapping("{id}")
 	public ResponseEntity<DeleteUsuarioResponse> removeUsuario(@PathVariable String id) {
 		
