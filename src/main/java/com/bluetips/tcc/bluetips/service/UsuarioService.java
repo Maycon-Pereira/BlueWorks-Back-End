@@ -30,7 +30,7 @@ public class UsuarioService {
 		usuarioEntity.setNome(request.getNome());
 		usuarioEntity.setCpf(request.getCpf());
 		usuarioEntity.setEscolaridade(request.getEscolaridade());
-		usuarioEntity.setData(request.getData());
+		usuarioEntity.setNascimento(request.getNascimento());
 		usuarioEntity.setSobre(request.getSobre());
 		usuarioEntity.setTelefone(request.getTelefone());
 		usuarioEntity.setEmail(request.getEmail());
@@ -76,7 +76,7 @@ public class UsuarioService {
 		usuarioEntity.setNome(request.getNome());
 		usuarioEntity.setCpf(request.getCpf());
 		usuarioEntity.setEscolaridade(request.getEscolaridade());
-		usuarioEntity.setData(request.getData());
+		usuarioEntity.setNascimento(request.getNascimento());
 		usuarioEntity.setSobre(request.getSobre());
 		usuarioEntity.setTelefone(request.getTelefone());
 		usuarioEntity.setEmail(request.getEmail());

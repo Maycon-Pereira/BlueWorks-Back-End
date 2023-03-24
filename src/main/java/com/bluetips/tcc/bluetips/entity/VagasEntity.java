@@ -17,7 +17,7 @@ public class VagasEntity {
 	private String nome;
 	private String tipo;
 	private String qtda;
-	private String data;
+	private String data_publicacao;
 	private String salario;
 	private String escolaridade;
 	
@@ -75,11 +75,11 @@ public class VagasEntity {
 	public void setQtda(String qtda) {
 		this.qtda = qtda;
 	}
-	public String getData() {
-		return data;
+	public String getData_publicacao() {
+		return data_publicacao;
 	}
-	public void setData(String data) {
-		this.data = data;
+	public void setData_publicacao(String data_publicacao) {
+		this.data_publicacao = data_publicacao;
 	}
 	public String getSalario() {
 		return salario;

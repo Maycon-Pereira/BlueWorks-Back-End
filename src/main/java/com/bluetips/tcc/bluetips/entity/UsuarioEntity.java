@@ -16,7 +16,7 @@ public class UsuarioEntity {
 	private String nome;
 	private String cpf;
 	private String escolaridade;
-	private String data; //data de nascimento
+	private String nascimento; //data de nascimento
 	private String sobre;
 	private String telefone;
 	private String email;
@@ -87,11 +87,11 @@ public class UsuarioEntity {
 	public void setEscolaridade(String escolaridade) {
 		this.escolaridade = escolaridade;
 	}
-	public String getData() {
-		return data;
+	public String getNascimento() {
+		return nascimento;
 	}
-	public void setData(String data) {
-		this.data = data;
+	public void setNascimento(String nascimento) {
+		this.nascimento = nascimento;
 	}
 	public String getSobre() {
 		return sobre;

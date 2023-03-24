@@ -19,7 +19,7 @@ public class CriaUsuarioRequest {
 	private String escolaridade;
 	
 	@NotEmpty(message="A data não pode estar vazio.")
-	private String data; //data de nascimento
+	private String nascimento; //data de nascimento
 	
 	@NotEmpty(message="O Sobre não pode estar vazio.")
 	private String sobre;
@@ -81,11 +81,11 @@ public class CriaUsuarioRequest {
 	public void setEscolaridade(String escolaridade) {
 		this.escolaridade = escolaridade;
 	}
-	public String getData() {
-		return data;
+	public String getNascimento() {
+		return nascimento;
 	}
-	public void setData(String data) {
-		this.data = data;
+	public void setNascimento(String nascimento) {
+		this.nascimento = nascimento;
 	}
 	public String getSobre() {
 		return sobre;

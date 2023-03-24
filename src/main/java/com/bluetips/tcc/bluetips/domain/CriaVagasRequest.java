@@ -17,7 +17,7 @@ public class CriaVagasRequest {
 	private String qtda;
 	
 	@NotEmpty(message="A data não pode estar vazio.")
-	private String data;
+	private String data_publicacao;
 	
 	
 	@Size(min=3)
@@ -91,11 +91,11 @@ public class CriaVagasRequest {
 	public void setQtda(String qtda) {
 		this.qtda = qtda;
 	}
-	public String getData() {
-		return data;
+	public String getData_publicacao() {
+		return data_publicacao;
 	}
-	public void setData(String data) {
-		this.data = data;
+	public void setData_publicacao(String data_publicacao) {
+		this.data_publicacao = data_publicacao;
 	}
 	public String getSalario() {
 		return salario;

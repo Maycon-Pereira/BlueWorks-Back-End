@@ -30,7 +30,7 @@ public class VagasService {
 		vagasEntity.setNome(request.getNome());
 		vagasEntity.setTipo(request.getTipo());
 		vagasEntity.setQtda(request.getQtda());
-		vagasEntity.setData(request.getData());
+		vagasEntity.setData_publicacao(request.getData_publicacao());
 		vagasEntity.setSalario(request.getSalario());
 		vagasEntity.setEscolaridade(request.getEscolaridade());
 		vagasEntity.setArea(request.getArea());
@@ -84,7 +84,7 @@ public class VagasService {
 		vagasEntity.setNome(request.getNome());
 		vagasEntity.setTipo(request.getTipo());
 		vagasEntity.setQtda(request.getQtda());
-		vagasEntity.setData(request.getData());
+		vagasEntity.setData_publicacao(request.getData_publicacao());
 		vagasEntity.setSalario(request.getSalario());
 		vagasEntity.setEscolaridade(request.getEscolaridade());
 		vagasEntity.setArea(request.getArea());
