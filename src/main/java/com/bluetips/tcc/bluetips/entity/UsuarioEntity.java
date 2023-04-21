@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-@Entity(name="tabela_Usuario")//UsuarioEntity=representa a tabela no banco de dados
+@Entity(name="Usuario")//UsuarioEntity=representa a tabela no banco de dados
 public class UsuarioEntity {
 
 	@Id
@@ -39,6 +39,9 @@ public class UsuarioEntity {
 	
 	private String nomeEmpresas;
 	
+	//status atual da entidade
+	private boolean status_usuario;
+		
 	@Lob
 	private String fotoBase64;
 	
@@ -160,5 +163,12 @@ public class UsuarioEntity {
 	public void setUsuarioDipensado(boolean usuarioDipensado) {
 		this.usuarioDipensado = usuarioDipensado;
 	}
+	public boolean isStatus_usuario() {
+		return status_usuario;
+	}
+	public void setStatus_usuario(boolean status_usuario) {
+		this.status_usuario = status_usuario;
+	}
+	
 	
 }

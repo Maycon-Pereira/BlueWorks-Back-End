@@ -41,6 +41,7 @@ public class UsuarioService {
 		usuarioEntity.setBairro(request.getBairro());
 		usuarioEntity.setCidade(request.getCidade());
 		usuarioEntity.setUf(request.getUf());
+		usuarioEntity.setStatus_usuario(request.isStatus_usuario());
 		
 		UsuarioEntity saved = usuarioRepository.save(usuarioEntity);
 		
@@ -87,6 +88,7 @@ public class UsuarioService {
 		usuarioEntity.setBairro(request.getBairro());
 		usuarioEntity.setCidade(request.getCidade());
 		usuarioEntity.setUf(request.getUf());
+		usuarioEntity.setStatus_usuario(request.isStatus_usuario());
 		
 		UsuarioEntity saved = usuarioRepository.save(usuarioEntity);
 		

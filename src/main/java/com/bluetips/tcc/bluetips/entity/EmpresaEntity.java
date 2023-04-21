@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-@Entity(name="tabela_Empresa")//EmpresaEntity=representa a tabela no banco de dados 
+@Entity(name="Empresa")//EmpresaEntity=representa a tabela no banco de dados 
 public class EmpresaEntity {
 
 	@Id
@@ -29,6 +29,9 @@ public class EmpresaEntity {
 	private String uf;
 	private String cidade;
 	//FIM DO OBJETO ENDERECO
+	
+	//status atual da entidade
+	private boolean status_empresa;
 	
 	@Lob
 	private String fotoBase64;
@@ -125,5 +128,13 @@ public class EmpresaEntity {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
+	public boolean isStatus_empresa() {
+		return status_empresa;
+	}
+	public void setStatus_empresa(boolean status_empresa) {
+		this.status_empresa = status_empresa;
+	}
+	
+	
 
 }

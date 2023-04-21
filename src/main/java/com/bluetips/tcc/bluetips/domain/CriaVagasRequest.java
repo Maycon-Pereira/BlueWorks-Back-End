@@ -62,6 +62,9 @@ public class CriaVagasRequest {
 	private String cidade;
 	//FIM DO OBJETO ENDERECO
 	
+	//status atual da entidade
+	private boolean status_vaga;
+	
 	@Lob
 	private String fotoBase64;
 	
@@ -184,5 +187,12 @@ public class CriaVagasRequest {
 	public void setContrato(String contrato) {
 		this.contrato = contrato;
 	}
+	public boolean isStatus_vaga() {
+		return status_vaga;
+	}
+	public void setStatus_vaga(boolean status_vaga) {
+		this.status_vaga = status_vaga;
+	}
+	
 	
 }

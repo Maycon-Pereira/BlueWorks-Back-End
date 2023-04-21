@@ -49,7 +49,8 @@ public class CriaEmpresaRequest {
 	private String cidade;
 	//FIM DO OBJETO ENDERECO
 	
-	
+	//status atual da entidade
+	private boolean status_empresa;
 	
 	@Lob
 	private String fotoBase64;
@@ -140,6 +141,12 @@ public class CriaEmpresaRequest {
 	}
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+	public boolean isStatus_empresa() {
+		return status_empresa;
+	}
+	public void setStatus_empresa(boolean status_empresa) {
+		this.status_empresa = status_empresa;
 	}
 
 }

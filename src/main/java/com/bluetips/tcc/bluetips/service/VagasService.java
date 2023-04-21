@@ -45,6 +45,7 @@ public class VagasService {
 		vagasEntity.setBairro(request.getBairro());
 		vagasEntity.setUf(request.getUf());
 		vagasEntity.setCidade(request.getCidade());
+		vagasEntity.setStatus_vaga(request.isStatus_vaga());
 		
 		VagasEntity saved = vagasRepository.save(vagasEntity);
 		
@@ -99,6 +100,7 @@ public class VagasService {
 		vagasEntity.setBairro(request.getBairro());
 		vagasEntity.setUf(request.getUf());
 		vagasEntity.setCidade(request.getCidade());
+		vagasEntity.setStatus_vaga(request.isStatus_vaga());
 		
 		VagasEntity saved = vagasRepository.save(vagasEntity);
 		

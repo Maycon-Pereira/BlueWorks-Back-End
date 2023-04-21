@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 
 
-@Entity(name="tabela_Vagas")
+@Entity(name="Vaga")
 public class VagasEntity {
 	
 	@Id
@@ -39,6 +39,9 @@ public class VagasEntity {
 	private String uf;
 	private String cidade;
 	//FIM DO OBJETO ENDERECO
+	
+	//status atual da entidade
+	private boolean status_vaga;
 	
 	@Lob
 	private String fotoBase64;
@@ -144,30 +147,37 @@ public class VagasEntity {
 	
 	//NEW
 	
-		public String getArea() {
-			return area;
-		}
-		public void setArea(String area) {
-			this.area = area;
-		}
-		public String getExigencias() {
-			return exigencias;
-		}
-		public void setExigencias(String exigencias) {
-			this.exigencias = exigencias;
-		}
-		public String getValorizado() {
-			return valorizado;
-		}
-		public void setValorizado(String valorizado) {
-			this.valorizado = valorizado;
-		}
-		public String getContrato() {
-			return contrato;
-		}
-		public void setContrato(String contrato) {
-			this.contrato = contrato;
-		}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
+	public String getExigencias() {
+		return exigencias;
+	}
+	public void setExigencias(String exigencias) {
+		this.exigencias = exigencias;
+	}
+	public String getValorizado() {
+		return valorizado;
+	}
+	public void setValorizado(String valorizado) {
+		this.valorizado = valorizado;
+	}
+	public String getContrato() {
+		return contrato;
+	}
+	public void setContrato(String contrato) {
+		this.contrato = contrato;
+	}
+	public boolean isStatus_vaga() {
+		return status_vaga;
+	}
+	public void setStatus_vaga(boolean status_vaga) {
+		this.status_vaga = status_vaga;
+	}
+	
 		
 	
 }

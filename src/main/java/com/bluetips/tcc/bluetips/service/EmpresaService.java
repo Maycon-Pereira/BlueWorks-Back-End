@@ -40,6 +40,7 @@ public class EmpresaService {
 		empresaEntity.setBairro(request.getBairro());
 		empresaEntity.setUf(request.getUf());
 		empresaEntity.setCidade(request.getCidade());
+		empresaEntity.setStatus_empresa(request.isStatus_empresa());
 
 		//sempre vai inserir pq estamos gerando um ID aleatoriamente
 		EmpresaEntity saved = empresaRepository.save(empresaEntity);
@@ -89,6 +90,7 @@ public class EmpresaService {
 		empresaEntity.setBairro(request.getBairro());
 		empresaEntity.setUf(request.getUf());
 		empresaEntity.setCidade(request.getCidade());
+		empresaEntity.setStatus_empresa(request.isStatus_empresa());
 
 		//sempre vai ATUALIZAR pq estamos recebendo um ID por paramentro
 		EmpresaEntity saved = empresaRepository.save(empresaEntity);
