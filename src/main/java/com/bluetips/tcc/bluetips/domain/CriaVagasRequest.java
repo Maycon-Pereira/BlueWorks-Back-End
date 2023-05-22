@@ -43,17 +43,17 @@ public class CriaVagasRequest {
 	private String sobre;
 	
 	@NotEmpty(message="O CNPJ não pode estar vazio.")
-	@Size(min=14, max=14)
+	@Size(min=18, max=18)
 	private String cnpj;
-	
-	@NotEmpty(message="A senha não pode estar vazio.")
-	@Size(min=8, max=20)
-	private String senha;
+//	
+//	@NotEmpty(message="A senha não pode estar vazio.")
+//	@Size(min=8, max=20)
+//	private String senha;
 	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
 	
 	@NotNull(message="O CPF não pode estar vazio.")
-	@Size(min=8, max=8)
+	@Size(min=9, max=9)
 	private String cep;
 	
 	private String logradouro;
@@ -124,12 +124,12 @@ public class CriaVagasRequest {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+//	public String getSenha() {
+//		return senha;
+//	}
+//	public void setSenha(String senha) {
+//		this.senha = senha;
+//	}
 	public String getCep() {
 		return cep;
 	}

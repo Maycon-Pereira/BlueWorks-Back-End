@@ -12,7 +12,7 @@ public class CriaEmpresaRequest {
 	private String nome;
 	
 	@NotEmpty(message="O CNPJ não pode estar vazio.")
-	@Size(min=14, max=14)
+	@Size(min=18, max=18)
 	private String cnpj;
 	
 	@NotEmpty(message="O Porte não pode estar vazio.")
@@ -40,7 +40,7 @@ public class CriaEmpresaRequest {
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
 	
 	@NotNull(message="O CPF não pode estar vazio.")
-	@Size(min=8, max=8)
+	@Size(min=9, max=9)
 	private String cep;
 	
 	private String logradouro;

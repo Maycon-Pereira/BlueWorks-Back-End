@@ -30,7 +30,7 @@ public class VagasEntity {
 	
 	private String sobre;
 	private String cnpj;
-	private String senha;
+//	private String senha;
 	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
 	private String cep;
@@ -108,12 +108,12 @@ public class VagasEntity {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+//	public String getSenha() {
+//		return senha;
+//	}
+//	public void setSenha(String senha) {
+//		this.senha = senha;
+//	}
 	public String getCep() {
 		return cep;
 	}

@@ -39,7 +39,7 @@ public class VagasService {
 		vagasEntity.setContrato(request.getContrato());
 		vagasEntity.setSobre(request.getSobre());
 		vagasEntity.setCnpj(request.getCnpj());
-		vagasEntity.setSenha(request.getSenha());
+//		vagasEntity.setSenha(request.getSenha());
 		vagasEntity.setCep(request.getCep());
 		vagasEntity.setLogradouro(request.getLogradouro());
 		vagasEntity.setBairro(request.getBairro());
@@ -94,7 +94,7 @@ public class VagasService {
 		vagasEntity.setContrato(request.getContrato());
 		vagasEntity.setSobre(request.getSobre());
 		vagasEntity.setCnpj(request.getCnpj());
-		vagasEntity.setSenha(request.getSenha());
+//		vagasEntity.setSenha(request.getSenha());
 		vagasEntity.setCep(request.getCep());
 		vagasEntity.setLogradouro(request.getLogradouro());
 		vagasEntity.setBairro(request.getBairro());
