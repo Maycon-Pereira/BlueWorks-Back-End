@@ -52,7 +52,7 @@ public class CriaUsuarioRequest {
 	//FIM DO OBJETO ENDERECO
 	
 	//status atual da entidade
-	private boolean status_usuario;
+	private boolean status_usuario = true;
 	
 	@Lob
 	private String fotoBase64;

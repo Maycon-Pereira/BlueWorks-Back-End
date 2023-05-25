@@ -63,8 +63,8 @@ public class CriaVagasRequest {
 	//FIM DO OBJETO ENDERECO
 	
 	//status atual da entidade
-	private boolean status_vaga;
-	
+	private boolean status_vaga = true;
+
 	@Lob
 	private String fotoBase64;
 	

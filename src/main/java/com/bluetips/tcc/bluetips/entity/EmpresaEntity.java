@@ -31,7 +31,7 @@ public class EmpresaEntity {
 	//FIM DO OBJETO ENDERECO
 	
 	//status atual da entidade
-	private boolean status_empresa;
+	private boolean status_empresa = true;
 	
 	@Lob
 	private String fotoBase64;
