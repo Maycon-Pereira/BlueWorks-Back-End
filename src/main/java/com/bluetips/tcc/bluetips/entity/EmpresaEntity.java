@@ -1,5 +1,6 @@
 package com.bluetips.tcc.bluetips.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,30 +11,57 @@ import javax.persistence.Lob;
 public class EmpresaEntity {
 
 	@Id
+	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	
+	@Column(name="nome")
 	private String nome;
+	
+	@Column(name="cnpj")
 	private String cnpj;
+	
+	@Column(name="porte")
 	private String porte;
+	
+	@Column(name="sobre")
 	private String sobre;
+	
+	@Column(name="telefone")
 	private String telefone;
+	
+	@Column(name="email")
 	private String email;
+	
+	@Column(name="senha")
 	private String senha;
+	
+	@Column(name="confirmSenha")
 	private String confirmSenha;
 	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
+	@Column(name="cep")
 	private String cep;
+	
+	@Column(name="logradouro")
 	private String logradouro;
+	
+	@Column(name="bairro")
 	private String bairro;
+	
+	@Column(name="uf")
 	private String uf;
+	
+	@Column(name="cidade")
 	private String cidade;
 	//FIM DO OBJETO ENDERECO
 	
 	//status atual da entidade
-	private boolean status_empresa = true;
+	@Column(name="status_empresa")
+	private String status_empresa;
 	
 	@Lob
+	@Column(name="foto")
 	private String fotoBase64;
 	
 	
@@ -128,12 +156,13 @@ public class EmpresaEntity {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	public boolean isStatus_empresa() {
+	public String getStatus_empresa() {
 		return status_empresa;
 	}
-	public void setStatus_empresa(boolean status_empresa) {
+	public void setStatus_empresa(String status_empresa) {
 		this.status_empresa = status_empresa;
 	}
+	
 	
 	
 

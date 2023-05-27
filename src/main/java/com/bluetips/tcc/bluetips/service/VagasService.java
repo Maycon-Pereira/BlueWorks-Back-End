@@ -12,7 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bluetips.tcc.bluetips.domain.CriaVagasRequest;
 import com.bluetips.tcc.bluetips.domain.CriaVagasResponse;
 import com.bluetips.tcc.bluetips.domain.DeletaVagaResponse;
+import com.bluetips.tcc.bluetips.domain.EmpresaVagaRequest;
+import com.bluetips.tcc.bluetips.entity.EmpresaVagaEntity;
 import com.bluetips.tcc.bluetips.entity.VagasEntity;
+import com.bluetips.tcc.bluetips.repository.EmpresaVagaRepository;
 import com.bluetips.tcc.bluetips.repository.VagasRepository;
 
 @Service
@@ -21,9 +24,13 @@ public class VagasService {
 	@Autowired
 	private VagasRepository vagasRepository;
 	
-	public CriaVagasResponse criaVagas(CriaVagasRequest request) {
+	@Autowired
+	private EmpresaVagaRepository empresaVagaRepository;
+	
+	public CriaVagasResponse criaVagas(CriaVagasRequest request, EmpresaVagaRequest requestEmpresaVaga) {
 		
 		VagasEntity vagasEntity = new VagasEntity();
+		EmpresaVagaEntity empresaVagaEntity = new EmpresaVagaEntity();
 		
 		vagasEntity.setId(UUID.randomUUID().toString());
 		
@@ -45,15 +52,28 @@ public class VagasService {
 		vagasEntity.setBairro(request.getBairro());
 		vagasEntity.setUf(request.getUf());
 		vagasEntity.setCidade(request.getCidade());
-		vagasEntity.setStatus_vaga(request.isStatus_vaga());
+		vagasEntity.setStatus_vaga(request.getStatus_vaga());
 		
-		VagasEntity saved = vagasRepository.save(vagasEntity);
+		
+		//Salva os dados do relacionamento entre a empresa e a vaga
+		VagasEntity savedVagasEntity = vagasRepository.save(vagasEntity);
+		
+		empresaVagaEntity.setId(UUID.randomUUID().toString());
+		empresaVagaEntity.setStatus_empresa(requestEmpresaVaga.getStatus_empresa());
+		empresaVagaEntity.setStatus_vaga(requestEmpresaVaga.getStatus_vaga());
+		empresaVagaEntity.setData_cadastro_vaga(requestEmpresaVaga.getData_cadastro_vaga());
+		empresaVagaEntity.setEmpresa(requestEmpresaVaga.getEmpresa());
+		empresaVagaEntity.setVaga(savedVagasEntity);// Associa a vaga à empresa
+		
+		
+		EmpresaVagaEntity savedEmpresaVagaEntity = empresaVagaRepository.save(empresaVagaEntity);
+		
 		
 		CriaVagasResponse criaVagasResponse = new CriaVagasResponse();
 		
-		criaVagasResponse.setId(saved.getId());
+		criaVagasResponse.setId(savedEmpresaVagaEntity.getId());
 				
-		return criaVagasResponse;	
+		return criaVagasResponse;
 	}
 	
 	public List<VagasEntity> listaTodasVagas(){
@@ -100,7 +120,7 @@ public class VagasService {
 		vagasEntity.setBairro(request.getBairro());
 		vagasEntity.setUf(request.getUf());
 		vagasEntity.setCidade(request.getCidade());
-		vagasEntity.setStatus_vaga(request.isStatus_vaga());
+		vagasEntity.setStatus_vaga(request.getStatus_vaga());
 		
 		VagasEntity saved = vagasRepository.save(vagasEntity);
 		

@@ -1,5 +1,6 @@
 package com.bluetips.tcc.bluetips.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,39 +11,71 @@ import javax.persistence.Lob;
 public class UsuarioEntity {
 
 	@Id
+	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	
+	@Column(name="nome")
 	private String nome;
+	
+	@Column(name="cpf")
 	private String cpf;
+	
+	@Column(name="escolaridade")
 	private String escolaridade;
+	
+	@Column(name="nascimento")
 	private String nascimento; //data de nascimento
+	
+	@Column(name="sobre")
 	private String sobre;
+	
+	@Column(name="telefone")
 	private String telefone;
+	
+	@Column(name="email")
 	private String email;
+	
+	@Column(name="senha")
 	private String senha;
+	
+	@Column(name="confirmSenha")
 	private String confirmSenha;
 	
 	//experiencia add
 	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
+	@Column(name="cep")
 	private String cep;
+	
+	@Column(name="logradouro")
 	private String logradouro;
+	
+	@Column(name="")
 	private String bairro;
+	
+	@Column(name="cidade")
 	private String cidade;
+	
+	@Column(name="uf")
 	private String uf;
 	//FIM DO OBJETO ENDERECO
 	
-	
+	@Column(name="empresaDeuLike")
 	private boolean empresaDeuLike;
+	
+	@Column(name="usuarioDipensado")
 	private boolean usuarioDipensado;
 	
+	@Column(name="nomeEmpresas")
 	private String nomeEmpresas;
 	
 	//status atual da entidade
-	private boolean status_usuario = true;
+	@Column(name="status_usuario")
+	private String status_usuario;
 		
 	@Lob
+	@Column(name="foto")
 	private String fotoBase64;
 	
 	
@@ -163,12 +196,13 @@ public class UsuarioEntity {
 	public void setUsuarioDipensado(boolean usuarioDipensado) {
 		this.usuarioDipensado = usuarioDipensado;
 	}
-	public boolean isStatus_usuario() {
+	public String getStatus_usuario() {
 		return status_usuario;
 	}
-	public void setStatus_usuario(boolean status_usuario) {
+	public void setStatus_usuario(String status_usuario) {
 		this.status_usuario = status_usuario;
 	}
+	
 	
 	
 }

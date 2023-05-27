@@ -52,7 +52,7 @@ public class CriaUsuarioRequest {
 	//FIM DO OBJETO ENDERECO
 	
 	//status atual da entidade
-	private boolean status_usuario = true;
+	private String status_usuario;
 	
 	@Lob
 	private String fotoBase64;
@@ -150,12 +150,13 @@ public class CriaUsuarioRequest {
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
-	public boolean isStatus_usuario() {
+	public String getStatus_usuario() {
 		return status_usuario;
 	}
-	public void setStatus_usuario(boolean status_usuario) {
+	public void setStatus_usuario(String status_usuario) {
 		this.status_usuario = status_usuario;
 	}
+	
 	
 	
 }

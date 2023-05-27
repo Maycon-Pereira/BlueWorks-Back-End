@@ -1,5 +1,6 @@
 package com.bluetips.tcc.bluetips.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,39 +12,72 @@ import javax.persistence.Lob;
 public class VagasEntity {
 	
 	@Id
+	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	
+	@Column(name="nome")
 	private String nome;
+	
+	@Column(name="tipo")
 	private String tipo;
+	
+	@Column(name="qtda")
 	private String qtda;
+	
+	@Column(name="data_publicacao")
 	private String data_publicacao;
+	
+	@Column(name="salario")
 	private String salario;
+	
+	@Column(name="escolaridade")
 	private String escolaridade;
 	
 	//-- NEW
+	@Column(name="area")
 	private String area;
+	
+	@Column(name="exigencias")
 	private String exigencias;
+	
+	@Column(name="valorizado")
 	private String valorizado;
+	
+	@Column(name="contrato")
 	private String contrato;
 	//--
-	
+	@Column(name="sobre")
 	private String sobre;
+	
+	@Column(name="cnpj")
 	private String cnpj;
+	
 //	private String senha;
 	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
+	@Column(name="cep")
 	private String cep;
+	
+	@Column(name="logradouro")
 	private String logradouro;
+	
+	@Column(name="bairro")
 	private String bairro;
+	
+	@Column(name="uf")
 	private String uf;
+	
+	@Column(name="cidade")
 	private String cidade;
 	//FIM DO OBJETO ENDERECO
 	
 	//status atual da entidade
-	private boolean status_vaga = true;
+	@Column(name="status_vaga")
+	private String status_vaga;
 	
 	@Lob
+	@Column(name="foto")
 	private String fotoBase64;
 	
 	
@@ -171,12 +205,13 @@ public class VagasEntity {
 	public void setContrato(String contrato) {
 		this.contrato = contrato;
 	}
-	public boolean isStatus_vaga() {
+	public String getStatus_vaga() {
 		return status_vaga;
 	}
-	public void setStatus_vaga(boolean status_vaga) {
+	public void setStatus_vaga(String status_vaga) {
 		this.status_vaga = status_vaga;
 	}
+	
 	
 		
 	
