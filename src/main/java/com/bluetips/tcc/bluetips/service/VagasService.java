@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bluetips.tcc.bluetips.domain.CriaVagasRequest;
 import com.bluetips.tcc.bluetips.domain.CriaVagasResponse;
 import com.bluetips.tcc.bluetips.domain.DeletaVagaResponse;
-import com.bluetips.tcc.bluetips.domain.EmpresaVagaRequest;
-import com.bluetips.tcc.bluetips.entity.EmpresaVagaEntity;
+import com.bluetips.tcc.bluetips.entity.EmpresaEntity;
 import com.bluetips.tcc.bluetips.entity.VagasEntity;
-import com.bluetips.tcc.bluetips.repository.EmpresaVagaRepository;
+import com.bluetips.tcc.bluetips.repository.EmpresaRepository;
 import com.bluetips.tcc.bluetips.repository.VagasRepository;
+import com.bluetips.tcc.bluetips.util.DataUtil;
 
 @Service
 public class VagasService {
@@ -25,19 +27,22 @@ public class VagasService {
 	private VagasRepository vagasRepository;
 	
 	@Autowired
-	private EmpresaVagaRepository empresaVagaRepository;
+	private EmpresaRepository empresaRepository;
 	
-	public CriaVagasResponse criaVagas(CriaVagasRequest request, EmpresaVagaRequest requestEmpresaVaga) {
+	public CriaVagasResponse criaVagas(CriaVagasRequest request) {
+	
+		Optional<EmpresaEntity> procurado = empresaRepository.findById(request.getId_empresa());
+		if(!procurado.isPresent()) {
+			throw new EntityNotFoundException("Id da empresa informado não existe");
+		}
 		
 		VagasEntity vagasEntity = new VagasEntity();
-		EmpresaVagaEntity empresaVagaEntity = new EmpresaVagaEntity();
-		
 		vagasEntity.setId(UUID.randomUUID().toString());
-		
+		vagasEntity.setId_empresa(request.getId_empresa());
 		vagasEntity.setNome(request.getNome());
 		vagasEntity.setTipo(request.getTipo());
 		vagasEntity.setQtda(request.getQtda());
-		vagasEntity.setData_publicacao(request.getData_publicacao());
+		vagasEntity.setData_publicacao(DataUtil.getDataAtualFormatada());
 		vagasEntity.setSalario(request.getSalario());
 		vagasEntity.setEscolaridade(request.getEscolaridade());
 		vagasEntity.setArea(request.getArea());
@@ -54,25 +59,11 @@ public class VagasService {
 		vagasEntity.setCidade(request.getCidade());
 		vagasEntity.setStatus_vaga(request.getStatus_vaga());
 		
-		
 		//Salva os dados do relacionamento entre a empresa e a vaga
 		VagasEntity savedVagasEntity = vagasRepository.save(vagasEntity);
 		
-		empresaVagaEntity.setId(UUID.randomUUID().toString());
-		empresaVagaEntity.setStatus_empresa(requestEmpresaVaga.getStatus_empresa());
-		empresaVagaEntity.setStatus_vaga(requestEmpresaVaga.getStatus_vaga());
-		empresaVagaEntity.setData_cadastro_vaga(requestEmpresaVaga.getData_cadastro_vaga());
-		empresaVagaEntity.setEmpresa(requestEmpresaVaga.getEmpresa());
-		empresaVagaEntity.setVaga(savedVagasEntity);// Associa a vaga à empresa
-		
-		
-		EmpresaVagaEntity savedEmpresaVagaEntity = empresaVagaRepository.save(empresaVagaEntity);
-		
-		
 		CriaVagasResponse criaVagasResponse = new CriaVagasResponse();
-		
-		criaVagasResponse.setId(savedEmpresaVagaEntity.getId());
-				
+		criaVagasResponse.setId(savedVagasEntity.getId());
 		return criaVagasResponse;
 	}
 	
@@ -98,14 +89,16 @@ public class VagasService {
 	
 	public VagasEntity atualizaVagas(String id, CriaVagasRequest request) {
 		
-		VagasEntity vagasEntity = new VagasEntity();
+		Optional<VagasEntity> procurado = vagasRepository.findById(id);
 		
-		vagasEntity.setId(id);
-		
+		if(!procurado.isPresent()) {
+			throw new RuntimeException("Vaga não encontrada");
+		}
+		VagasEntity vagasEntity = procurado.get();
 		vagasEntity.setNome(request.getNome());
 		vagasEntity.setTipo(request.getTipo());
 		vagasEntity.setQtda(request.getQtda());
-		vagasEntity.setData_publicacao(request.getData_publicacao());
+		vagasEntity.setData_atualizacao(DataUtil.getDataAtualFormatada());
 		vagasEntity.setSalario(request.getSalario());
 		vagasEntity.setEscolaridade(request.getEscolaridade());
 		vagasEntity.setArea(request.getArea());
@@ -122,6 +115,7 @@ public class VagasService {
 		vagasEntity.setCidade(request.getCidade());
 		vagasEntity.setStatus_vaga(request.getStatus_vaga());
 		
+		//neste caso sempre será um "update" porque o id já existe
 		VagasEntity saved = vagasRepository.save(vagasEntity);
 		
 		return saved;
@@ -154,7 +148,7 @@ public class VagasService {
 				Optional<VagasEntity> procurado = vagasRepository.findById(id);
 				
 				if(!procurado.isPresent()) {
-					throw new RuntimeException("usuario não encontrado");
+					throw new RuntimeException("Vaga não encontrada");
 				}
 				VagasEntity vagasEntity = procurado.get();
 				

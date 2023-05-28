@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-
 @Entity(name="Vaga")
 public class VagasEntity {
 	
@@ -27,6 +26,9 @@ public class VagasEntity {
 	
 	@Column(name="data_publicacao")
 	private String data_publicacao;
+	
+	@Column(name="data_atualizacao")
+	private String data_atualizacao;
 	
 	@Column(name="salario")
 	private String salario;
@@ -80,6 +82,23 @@ public class VagasEntity {
 	@Column(name="foto")
 	private String fotoBase64;
 	
+	private String id_empresa;
+
+	
+	
+	public String getData_atualizacao() {
+		return data_atualizacao;
+	}
+	public void setData_atualizacao(String data_atualizacao) {
+		this.data_atualizacao = data_atualizacao;
+	}
+	
+	public String getId_empresa() {
+		return id_empresa;
+	}
+	public void setId_empresa(String id_empresa) {
+		this.id_empresa = id_empresa;
+	}
 	
 	public String getFotoBase64() {
 		return fotoBase64;
