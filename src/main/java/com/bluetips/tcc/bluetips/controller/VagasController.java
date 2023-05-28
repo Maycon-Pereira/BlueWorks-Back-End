@@ -21,7 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bluetips.tcc.bluetips.domain.CriaVagasRequest;
 import com.bluetips.tcc.bluetips.domain.CriaVagasResponse;
 import com.bluetips.tcc.bluetips.domain.DeletaVagaResponse;
-import com.bluetips.tcc.bluetips.domain.EmpresaVagaRequest;
 import com.bluetips.tcc.bluetips.entity.VagasEntity;
 import com.bluetips.tcc.bluetips.service.VagasService;
 
@@ -33,9 +32,9 @@ public class VagasController {
 	private VagasService vagasService;
 	
 	@PostMapping
-	public CriaVagasResponse criaVagas(@Valid @RequestBody CriaVagasRequest request, EmpresaVagaRequest requestEmpresaVaga) {
+	public CriaVagasResponse criaVagas(@Valid @RequestBody CriaVagasRequest request) {
 		
-		CriaVagasResponse response = vagasService.criaVagas(request, requestEmpresaVaga);
+		CriaVagasResponse response = vagasService.criaVagas(request);
 		
 		return response;
 	}
