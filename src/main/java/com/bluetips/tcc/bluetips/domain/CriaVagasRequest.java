@@ -64,7 +64,7 @@ public class CriaVagasRequest {
 	@Lob
 	private String fotoBase64;
 
-	@NotEmpty(message = "O status_empresa não pode estar vazio.")
+	@NotEmpty(message = "O id da empresa não pode estar vazio.")
 	private String id_empresa;
 
 	public String getId_empresa() {

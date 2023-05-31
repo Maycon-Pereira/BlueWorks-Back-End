@@ -51,7 +51,7 @@ public class UsuarioEntity {
 	@Column(name="logradouro")
 	private String logradouro;
 	
-	@Column(name="")
+	@Column(name="bairro")
 	private String bairro;
 	
 	@Column(name="cidade")
