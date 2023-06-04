@@ -18,45 +18,45 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bluetips.tcc.bluetips.domain.CriaUsuarioRequest;
-import com.bluetips.tcc.bluetips.domain.CriaUsuarioResponse;
-import com.bluetips.tcc.bluetips.domain.DeleteUsuarioResponse;
-import com.bluetips.tcc.bluetips.entity.UsuarioEntity;
-import com.bluetips.tcc.bluetips.service.UsuarioService;
+import com.bluetips.tcc.bluetips.domain.CriaCandidatoRequest;
+import com.bluetips.tcc.bluetips.domain.CriaCandidatoResponse;
+import com.bluetips.tcc.bluetips.domain.DeleteCandidatoResponse;
+import com.bluetips.tcc.bluetips.entity.CandidatoEntity;
+import com.bluetips.tcc.bluetips.service.CandidatoService;
 
 @RestController
 @RequestMapping("/usuario")
-public class UsuarioController {
+public class CandidatoController {
 
 	@Autowired
-	private UsuarioService usuarioService;
+	private CandidatoService usuarioService;
 	
 	@PostMapping
-	public CriaUsuarioResponse criaUsuario(@Valid @RequestBody CriaUsuarioRequest request) {
+	public CriaCandidatoResponse criaUsuario(@Valid @RequestBody CriaCandidatoRequest request) {
 		
-		CriaUsuarioResponse response = usuarioService.criaUsuario(request);
+		CriaCandidatoResponse response = usuarioService.criaUsuario(request);
 		
 		return response;
 	}
 	
 	@GetMapping
-	public List<UsuarioEntity> listaTodosUsuarios() {
+	public List<CandidatoEntity> listaTodosUsuarios() {
 		
-		List<UsuarioEntity> response = usuarioService.listaTodosUsuarios();
+		List<CandidatoEntity> response = usuarioService.listaTodosUsuarios();
 		return response;
 	}
 	
 	@GetMapping("/{id}")
-	public UsuarioEntity buscaUsuarioPorId(@PathVariable String id) {
+	public CandidatoEntity buscaUsuarioPorId(@PathVariable String id) {
 	
-		UsuarioEntity response = usuarioService.buscaUsuarioPorId(id);
+		CandidatoEntity response = usuarioService.buscaUsuarioPorId(id);
 		return response;
 	}
 	
 	@PutMapping("{id}")
-	public UsuarioEntity atualizaUsuario(@PathVariable String id, @RequestBody CriaUsuarioRequest request) {
+	public CandidatoEntity atualizaUsuario(@PathVariable String id, @RequestBody CriaCandidatoRequest request) {
 		
-		UsuarioEntity response = usuarioService.atualizaUsuario(id, request); 
+		CandidatoEntity response = usuarioService.atualizaUsuario(id, request); 
 		return response;
 	}
 	
@@ -79,9 +79,9 @@ public class UsuarioController {
 	}
 	
 	@DeleteMapping("{id}")
-	public ResponseEntity<DeleteUsuarioResponse> removeUsuario(@PathVariable String id) {
+	public ResponseEntity<DeleteCandidatoResponse> removeUsuario(@PathVariable String id) {
 		
-		DeleteUsuarioResponse response = usuarioService.removeUsuario(id);
+		DeleteCandidatoResponse response = usuarioService.removeUsuario(id);
 		
 		if(response.isDeletado()) {
 			return new ResponseEntity<>(response, HttpStatus.OK);
@@ -99,9 +99,9 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/v2/image/download")
-	public List<UsuarioEntity> download() {
+	public List<CandidatoEntity> download() {
 
-		List<UsuarioEntity> response = usuarioService.download();
+		List<CandidatoEntity> response = usuarioService.download();
 		return response;
 		
 		}

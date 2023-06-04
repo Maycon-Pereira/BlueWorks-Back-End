@@ -1,6 +1,6 @@
 package com.bluetips.tcc.bluetips.domain;
 
-public class CriaUsuarioVagaResponse {
+public class CriaCandidatoResponse {
 
 	private String id;
 

@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bluetips.tcc.bluetips.domain.CriaUsuarioVagaRequest;
-import com.bluetips.tcc.bluetips.domain.CriaUsuarioVagaResponse;
-import com.bluetips.tcc.bluetips.service.UsuarioVagaService;
+import com.bluetips.tcc.bluetips.domain.CriaCandidatoVagaRequest;
+import com.bluetips.tcc.bluetips.domain.CriaCandidatoVagaResponse;
+import com.bluetips.tcc.bluetips.service.CandidatoVagaService;
 
 @RestController
 @RequestMapping("/usuarioVaga")
-public class UsuarioVagaController {
+public class CandidatoVagaController {
 
 	@Autowired
-	private UsuarioVagaService usuarioVagaService;
+	private CandidatoVagaService usuarioVagaService;
 	
 	@PostMapping("/candidatura")
-	public CriaUsuarioVagaResponse criaCandidatura(@Valid @RequestBody CriaUsuarioVagaRequest request) {
+	public CriaCandidatoVagaResponse criaCandidatura(@Valid @RequestBody CriaCandidatoVagaRequest request) {
 		
-		CriaUsuarioVagaResponse response = usuarioVagaService.criaCandidatura(request);
+		CriaCandidatoVagaResponse response = usuarioVagaService.criaCandidatura(request);
 		
 		return response;
 	}

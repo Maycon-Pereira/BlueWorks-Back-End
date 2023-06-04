@@ -2,7 +2,7 @@ package com.bluetips.tcc.bluetips.domain;
 
 import javax.validation.constraints.NotEmpty;
 
-public class CriaUsuarioVagaRequest {
+public class CriaCandidatoVagaRequest {
 	
 	@NotEmpty
 	private String idUsuario;

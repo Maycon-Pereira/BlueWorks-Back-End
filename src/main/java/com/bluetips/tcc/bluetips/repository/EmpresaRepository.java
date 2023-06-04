@@ -9,4 +9,7 @@ import com.bluetips.tcc.bluetips.entity.EmpresaEntity;
 public interface EmpresaRepository extends JpaRepository<EmpresaEntity, String>{
 
 	EmpresaEntity findByCnpj(String cnpj);
+	
+	EmpresaEntity findByEmailAndSenha(String email, String senha);
+	
 }

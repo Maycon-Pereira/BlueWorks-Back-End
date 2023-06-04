@@ -1,83 +1,61 @@
-package com.bluetips.tcc.bluetips.entity;
+package com.bluetips.tcc.bluetips.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Entity(name="Usuario")//UsuarioEntity=representa a tabela no banco de dados
-public class UsuarioEntity {
+public class CriaCandidatoRequest {
 
-	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
-	
-	@Column(name="nome")
+	@NotEmpty(message="O nome não pode estar vazio.")
 	private String nome;
 	
-	@Column(name="cpf")
+	@NotEmpty(message="O CPF não pode estar vazio.")
+	@Size(min=11, max=11)
 	private String cpf;
 	
-	@Column(name="escolaridade")
+	@NotEmpty(message="A escolaridade não pode estar vazio.")
 	private String escolaridade;
 	
-	@Column(name="nascimento")
+	@NotEmpty(message="A data não pode estar vazio.")
 	private String nascimento; //data de nascimento
 	
-	@Column(name="sobre")
+	@NotEmpty(message="O Sobre não pode estar vazio.")
 	private String sobre;
 	
-	@Column(name="telefone")
+	//
 	private String telefone;
 	
-	@Column(name="email")
+	@NotEmpty(message="O Email não pode estar vazio.")
+	@Email
 	private String email;
 	
-	@Column(name="senha")
+	@NotEmpty(message="A senha não pode estar vazio.")
+	@Size(min=8, max=20)
 	private String senha;
 	
-	@Column(name="confirmSenha")
+	@Size(min=8, max=20)
+	@NotEmpty(message="As senhas devem ser compativeis.")
 	private String confirmSenha;
 	
-	//experiencia add
-	
 	//INICIO DO OBJETO ENDERECO (private Endereco endereco)
-	@Column(name="cep")
+	
+	@NotNull
+	@Size(min=8, max=8)
 	private String cep;
 	
-	@Column(name="logradouro")
 	private String logradouro;
-	
-	@Column(name="bairro")
 	private String bairro;
-	
-	@Column(name="cidade")
 	private String cidade;
-	
-	@Column(name="uf")
 	private String uf;
 	//FIM DO OBJETO ENDERECO
 	
-	@Column(name="empresaDeuLike")
-	private boolean empresaDeuLike;
-	
-	@Column(name="usuarioDipensado")
-	private boolean usuarioDipensado;
-	
-	@Column(name="nomeEmpresas")
-	private String nomeEmpresas;
-	
 	//status atual da entidade
-	@Column(name="status_usuario")
 	private String status_usuario;
-		
-	@Lob
-	@Column(name="foto")
-	private String fotoBase64;
 	
+	@Lob
+	private String fotoBase64;
 	
 	public String getFotoBase64() {
 		return fotoBase64;
@@ -86,25 +64,8 @@ public class UsuarioEntity {
 		this.fotoBase64 = fotoBase64;
 	}
 	
-	public boolean isEmpresaDeuLike() {
-		return empresaDeuLike;
-	}
-	public void setEmpresaDeuLike(boolean empresaDeuLike) {
-		this.empresaDeuLike = empresaDeuLike;
-	}
-	public String getNomeEmpresas() {
-		return nomeEmpresas;
-	}
-	public void setNomeEmpresas(String nomeEmpresas) {
-		this.nomeEmpresas = nomeEmpresas;
-	}
 	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -153,7 +114,6 @@ public class UsuarioEntity {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
 	public String getConfirmSenha() {
 		return confirmSenha;
 	}
@@ -189,12 +149,6 @@ public class UsuarioEntity {
 	}
 	public void setUf(String uf) {
 		this.uf = uf;
-	}
-	public boolean isUsuarioDipensado() {
-		return usuarioDipensado;
-	}
-	public void setUsuarioDipensado(boolean usuarioDipensado) {
-		this.usuarioDipensado = usuarioDipensado;
 	}
 	public String getStatus_usuario() {
 		return status_usuario;

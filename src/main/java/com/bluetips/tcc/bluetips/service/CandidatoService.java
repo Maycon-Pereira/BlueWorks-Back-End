@@ -9,21 +9,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bluetips.tcc.bluetips.domain.CriaUsuarioRequest;
-import com.bluetips.tcc.bluetips.domain.CriaUsuarioResponse;
-import com.bluetips.tcc.bluetips.domain.DeleteUsuarioResponse;
-import com.bluetips.tcc.bluetips.entity.UsuarioEntity;
-import com.bluetips.tcc.bluetips.repository.UsuarioRepository;
+import com.bluetips.tcc.bluetips.domain.CriaCandidatoRequest;
+import com.bluetips.tcc.bluetips.domain.CriaCandidatoResponse;
+import com.bluetips.tcc.bluetips.domain.DeleteCandidatoResponse;
+import com.bluetips.tcc.bluetips.entity.CandidatoEntity;
+import com.bluetips.tcc.bluetips.repository.CandidatoRepository;
 
 @Service
-public class UsuarioService {
+public class CandidatoService {
 	
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private CandidatoRepository usuarioRepository;
 	
-	public CriaUsuarioResponse criaUsuario(CriaUsuarioRequest request) {
+	public CriaCandidatoResponse criaUsuario(CriaCandidatoRequest request) {
 		
-		UsuarioEntity usuarioEntity = new UsuarioEntity();
+		CandidatoEntity usuarioEntity = new CandidatoEntity();
 		
 		usuarioEntity.setId(UUID.randomUUID().toString());
 		
@@ -43,34 +43,34 @@ public class UsuarioService {
 		usuarioEntity.setUf(request.getUf());
 		usuarioEntity.setStatus_usuario(request.getStatus_usuario());
 		
-		UsuarioEntity saved = usuarioRepository.save(usuarioEntity);
+		CandidatoEntity saved = usuarioRepository.save(usuarioEntity);
 		
-		CriaUsuarioResponse criaUsuarioResponse = new CriaUsuarioResponse();
+		CriaCandidatoResponse criaUsuarioResponse = new CriaCandidatoResponse();
 		criaUsuarioResponse.setId(saved.getId());
 				
 		return criaUsuarioResponse;
 	}
 	
-	public List<UsuarioEntity> listaTodosUsuarios() {
+	public List<CandidatoEntity> listaTodosUsuarios() {
 		
-		List<UsuarioEntity> usuarios = usuarioRepository.findAll();
+		List<CandidatoEntity> usuarios = usuarioRepository.findAll();
 		
 		return usuarios;
 	}
 	
-	public UsuarioEntity buscaUsuarioPorId(String id) {
-		Optional<UsuarioEntity> procurado = usuarioRepository.findById(id);
+	public CandidatoEntity buscaUsuarioPorId(String id) {
+		Optional<CandidatoEntity> procurado = usuarioRepository.findById(id);
 		if(procurado.isPresent()) {
-			UsuarioEntity usuarioEntity = procurado.get();
+			CandidatoEntity usuarioEntity = procurado.get();
 			return usuarioEntity;
 		}else {
 			return null;	
 		}
 	}
 	
-	public UsuarioEntity atualizaUsuario(String id, CriaUsuarioRequest request) {
+	public CandidatoEntity atualizaUsuario(String id, CriaCandidatoRequest request) {
 	
-		UsuarioEntity usuarioEntity = new UsuarioEntity();
+		CandidatoEntity usuarioEntity = new CandidatoEntity();
 		
 		usuarioEntity.setId(id);
 		
@@ -90,19 +90,19 @@ public class UsuarioService {
 		usuarioEntity.setUf(request.getUf());
 		usuarioEntity.setStatus_usuario(request.getStatus_usuario());
 		
-		UsuarioEntity saved = usuarioRepository.save(usuarioEntity);
+		CandidatoEntity saved = usuarioRepository.save(usuarioEntity);
 		
 		return saved;
 	}
 	
 public void darLikeEmUsuario(String idUsuario, String nomeEmpresa) {
 		
-		Optional<UsuarioEntity> procurado = usuarioRepository.findById(idUsuario);
+		Optional<CandidatoEntity> procurado = usuarioRepository.findById(idUsuario);
 		if(!procurado.isPresent()) {
 			throw new RuntimeException("usuario não encontrado");
 		}
 		
-		UsuarioEntity usuarioEntity = procurado.get();
+		CandidatoEntity usuarioEntity = procurado.get();
 		usuarioEntity.setEmpresaDeuLike(true);
 		
 		String nomes = this.concatenaNomesEmpresa(usuarioEntity.getNomeEmpresas(), nomeEmpresa);
@@ -114,12 +114,12 @@ public void darLikeEmUsuario(String idUsuario, String nomeEmpresa) {
 
 public void naodarLikeEmUsuario(String idUsuario, String nomeEmpresa) {
 	
-	Optional<UsuarioEntity> procurado = usuarioRepository.findById(idUsuario);
+	Optional<CandidatoEntity> procurado = usuarioRepository.findById(idUsuario);
 	if(!procurado.isPresent()) {
 		throw new RuntimeException("usuario não encontrado");
 	}
 	
-	UsuarioEntity usuarioEntity = procurado.get();
+	CandidatoEntity usuarioEntity = procurado.get();
 	usuarioEntity.setEmpresaDeuLike(false);
 	
 	String nomes = this.concatenaNomesEmpresa(usuarioEntity.getNomeEmpresas(), nomeEmpresa);
@@ -131,12 +131,12 @@ public void naodarLikeEmUsuario(String idUsuario, String nomeEmpresa) {
 	
 public void dispensarUsuario(String idUsuario, String nomeEmpresa) {
 	
-	Optional<UsuarioEntity> procurado = usuarioRepository.findById(idUsuario);
+	Optional<CandidatoEntity> procurado = usuarioRepository.findById(idUsuario);
 	if(!procurado.isPresent()) {
 		throw new RuntimeException("usuario não encontrado");
 	}
 	
-	UsuarioEntity usuarioEntity = procurado.get();
+	CandidatoEntity usuarioEntity = procurado.get();
 	usuarioEntity.setUsuarioDipensado(true);
 	
 	String nomes = this.concatenaNomesEmpresa(usuarioEntity.getNomeEmpresas(), nomeEmpresa);
@@ -158,10 +158,10 @@ public void dispensarUsuario(String idUsuario, String nomeEmpresa) {
 		return sb.toString();
 	}
 	
-	public DeleteUsuarioResponse removeUsuario(String id) {
+	public DeleteCandidatoResponse removeUsuario(String id) {
 		
-		DeleteUsuarioResponse deleteUsuarioResponse = new DeleteUsuarioResponse();
-		UsuarioEntity procurado = this.buscaUsuarioPorId(id);
+		DeleteCandidatoResponse deleteUsuarioResponse = new DeleteCandidatoResponse();
+		CandidatoEntity procurado = this.buscaUsuarioPorId(id);
 		if(procurado == null) {
 			deleteUsuarioResponse.setMensagem("Usuario não encontrada");
 			deleteUsuarioResponse.setDeletado(false);
@@ -183,12 +183,12 @@ public void dispensarUsuario(String idUsuario, String nomeEmpresa) {
 	
 	//IMAGEM UPLOAD E DOWNLOAD
 		public void upload(MultipartFile file, String id) throws Exception {
-			Optional<UsuarioEntity> procurado = usuarioRepository.findById(id);
+			Optional<CandidatoEntity> procurado = usuarioRepository.findById(id);
 			
 			if(!procurado.isPresent()) {
 				throw new RuntimeException("usuario não encontrado");
 			}
-			UsuarioEntity usuarioEntity = procurado.get();
+			CandidatoEntity usuarioEntity = procurado.get();
 			
 			byte[] image = Base64.encodeBase64(file.getBytes());
 			String imagemBase64 = new String(image);
@@ -197,9 +197,9 @@ public void dispensarUsuario(String idUsuario, String nomeEmpresa) {
 			usuarioRepository.save(usuarioEntity);
 		}
 
-		public List<UsuarioEntity> download() {
+		public List<CandidatoEntity> download() {
 
-			List<UsuarioEntity> lista = usuarioRepository.findAll();
+			List<CandidatoEntity> lista = usuarioRepository.findAll();
 			return lista;
 			
 		}

@@ -1,6 +1,6 @@
 package com.bluetips.tcc.bluetips.domain;
 
-public class DeleteUsuarioResponse {
+public class DeleteCandidatoResponse {
 
 	private String mensagem;
 	private boolean deletado;

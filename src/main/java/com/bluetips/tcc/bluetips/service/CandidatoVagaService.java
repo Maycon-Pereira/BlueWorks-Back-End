@@ -8,31 +8,31 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bluetips.tcc.bluetips.domain.CriaUsuarioVagaRequest;
-import com.bluetips.tcc.bluetips.domain.CriaUsuarioVagaResponse;
-import com.bluetips.tcc.bluetips.entity.UsuarioEntity;
+import com.bluetips.tcc.bluetips.domain.CriaCandidatoVagaRequest;
+import com.bluetips.tcc.bluetips.domain.CriaCandidatoVagaResponse;
+import com.bluetips.tcc.bluetips.entity.CandidatoEntity;
 import com.bluetips.tcc.bluetips.entity.UsuarioVagaEntity;
 import com.bluetips.tcc.bluetips.entity.VagasEntity;
-import com.bluetips.tcc.bluetips.repository.UsuarioRepository;
-import com.bluetips.tcc.bluetips.repository.UsuarioVagaRepository;
+import com.bluetips.tcc.bluetips.repository.CandidatoRepository;
+import com.bluetips.tcc.bluetips.repository.CandidatoVagaRepository;
 import com.bluetips.tcc.bluetips.repository.VagasRepository;
 import com.bluetips.tcc.bluetips.util.DataUtil;
 
 @Service
-public class UsuarioVagaService {
+public class CandidatoVagaService {
 
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private CandidatoRepository usuarioRepository;
 
 	@Autowired
 	private VagasRepository vagasRepository;
 	
 	@Autowired
-	private UsuarioVagaRepository usuarioVagaRepository;
+	private CandidatoVagaRepository usuarioVagaRepository;
 	
-	public CriaUsuarioVagaResponse criaCandidatura(CriaUsuarioVagaRequest request) {
+	public CriaCandidatoVagaResponse criaCandidatura(CriaCandidatoVagaRequest request) {
 
-		Optional<UsuarioEntity> usuarioProcurado = usuarioRepository.findById(request.getIdUsuario());
+		Optional<CandidatoEntity> usuarioProcurado = usuarioRepository.findById(request.getIdUsuario());
 		if(!usuarioProcurado.isPresent()) {
 			throw new EntityNotFoundException("Usuario não encontrado");
 		}
@@ -49,7 +49,7 @@ public class UsuarioVagaService {
 		
 		UsuarioVagaEntity saved = usuarioVagaRepository.save(usuarioVagaEntity);
 		
-		CriaUsuarioVagaResponse response = new CriaUsuarioVagaResponse();
+		CriaCandidatoVagaResponse response = new CriaCandidatoVagaResponse();
 		response.setId(saved.getId());
 		
 		return response;
