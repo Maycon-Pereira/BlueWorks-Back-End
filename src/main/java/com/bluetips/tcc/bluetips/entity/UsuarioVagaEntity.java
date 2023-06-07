@@ -2,10 +2,7 @@ package com.bluetips.tcc.bluetips.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 
 @Entity(name="Usuario_Vaga")
 public class UsuarioVagaEntity {
