@@ -44,8 +44,8 @@ public class CandidatoVagaService {
 		UsuarioVagaEntity usuarioVagaEntity = new UsuarioVagaEntity();
 		usuarioVagaEntity.setId(UUID.randomUUID().toString());
 		usuarioVagaEntity.setData_candidatura(DataUtil.getDataAtualFormatada());
-		usuarioVagaEntity.setUsuario(request.getIdUsuario());
-		usuarioVagaEntity.setVaga(request.getIdVaga());
+		usuarioVagaEntity.setUsuario_id(request.getIdUsuario());
+		usuarioVagaEntity.setVaga_id(request.getIdVaga());
 		
 		UsuarioVagaEntity saved = usuarioVagaRepository.save(usuarioVagaEntity);
 		

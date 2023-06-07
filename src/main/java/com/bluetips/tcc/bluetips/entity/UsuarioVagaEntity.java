@@ -12,34 +12,33 @@ public class UsuarioVagaEntity {
 
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	
 	@Column(name="data_candidatura")
 	private String data_candidatura;
 	
-	@JoinColumn(name="usuario_id")
-	private String usuario;
+	private String usuario_id;
 	
-	@JoinColumn(name="vaga_id")
-	private String vaga;
+	private String vaga_id;
 
 	
 	
-	public String getUsuario() {
-		return usuario;
+	
+
+	public String getUsuario_id() {
+		return usuario_id;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUsuario_id(String usuario_id) {
+		this.usuario_id = usuario_id;
+	}
+	
+	public String getVaga_id() {
+		return vaga_id;
 	}
 
-	public String getVaga() {
-		return vaga;
-	}
-
-	public void setVaga(String vaga) {
-		this.vaga = vaga;
+	public void setVaga_id(String vaga_id) {
+		this.vaga_id = vaga_id;
 	}
 
 	public String getId() {
