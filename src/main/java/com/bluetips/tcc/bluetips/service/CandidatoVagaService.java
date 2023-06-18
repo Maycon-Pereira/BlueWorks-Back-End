@@ -1,5 +1,6 @@
 package com.bluetips.tcc.bluetips.service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -54,5 +55,13 @@ public class CandidatoVagaService {
 		
 		return response;
 	}
+	
+	public List<UsuarioVagaEntity> listaTodosUsuarioVaga() {
+		
+		List<UsuarioVagaEntity> response = usuarioVagaRepository.findAll();
+		
+		return response;
+	}
+	
 	
 }
