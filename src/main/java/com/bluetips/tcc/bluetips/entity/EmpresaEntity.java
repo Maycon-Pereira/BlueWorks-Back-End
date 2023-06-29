@@ -21,7 +21,7 @@ public class EmpresaEntity {
 	@Column(name="porte")
 	private String porte;
 	
-	@Column(name="sobre")
+	@Column(name="sobre", length = 1000)
 	private String sobre;
 	
 	@Column(name="telefone")
