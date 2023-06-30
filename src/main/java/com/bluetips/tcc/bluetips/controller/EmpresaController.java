@@ -39,7 +39,7 @@ public class EmpresaController {
 		return response;
 	}
 
-	@GetMapping("/all")
+	@GetMapping
 	public List<EmpresaEntity> listaTodasEmpresas() {
 		
 		List<EmpresaEntity> response = empresaService.listaTodasEmpresas();
