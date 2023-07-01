@@ -2,6 +2,7 @@ package com.bluetips.tcc.bluetips.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bluetips.tcc.bluetips.domain.LoginRequest;
 import com.bluetips.tcc.bluetips.domain.LoginResponse;
@@ -10,6 +11,7 @@ import com.bluetips.tcc.bluetips.entity.EmpresaEntity;
 import com.bluetips.tcc.bluetips.repository.CandidatoRepository;
 import com.bluetips.tcc.bluetips.repository.EmpresaRepository;
 
+@Transactional
 @Service
 public class LoginService {
 
