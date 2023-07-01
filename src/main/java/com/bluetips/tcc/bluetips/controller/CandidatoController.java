@@ -39,7 +39,7 @@ public class CandidatoController {
 		return response;
 	}
 	
-	@GetMapping
+	@GetMapping("/all")
 	public List<CandidatoEntity> listaTodosUsuarios() {
 		
 		List<CandidatoEntity> response = usuarioService.listaTodosUsuarios();

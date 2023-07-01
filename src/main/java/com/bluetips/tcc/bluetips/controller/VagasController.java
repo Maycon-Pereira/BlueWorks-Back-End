@@ -39,7 +39,7 @@ public class VagasController {
 		return response;
 	}
 	
-	@GetMapping
+	@GetMapping("/all")
 	public List<VagasEntity> listaTodasVagas(){
 	
 		List<VagasEntity> response = vagasService.listaTodasVagas();		
