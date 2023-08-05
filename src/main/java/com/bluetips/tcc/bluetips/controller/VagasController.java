@@ -2,6 +2,7 @@ package com.bluetips.tcc.bluetips.controller;
 
 import java.util.List;
 
+import javax.security.auth.login.AccountNotFoundException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,9 +56,12 @@ public class VagasController {
 	}
 	
 	@PutMapping("/{id}")
-	public VagasEntity atualizaVagas(@PathVariable String id, @RequestBody CriaVagasRequest request) {
+	public VagasEntity atualizaVagas(@PathVariable String id, @RequestBody CriaVagasRequest request) throws Exception {
 		
 		VagasEntity response = vagasService.atualizaVagas(id, request);
+		if(response == null) {
+			throw new AccountNotFoundException("Id não encontrado na base");
+		}
 		return response;
 	}
 	

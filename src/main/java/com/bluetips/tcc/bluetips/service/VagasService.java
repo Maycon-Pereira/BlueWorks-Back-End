@@ -114,7 +114,9 @@ public class VagasService {
 		vagasEntity.setUf(request.getUf());
 		vagasEntity.setCidade(request.getCidade());
 		vagasEntity.setStatus_vaga(request.getStatus_vaga());
-		
+		if(request.getFotoBase64() != null && !request.getFotoBase64().equals("")) {
+			vagasEntity.setFotoBase64(request.getFotoBase64());
+		}
 		//neste caso sempre será um "update" porque o id já existe
 		VagasEntity saved = vagasRepository.save(vagasEntity);
 		

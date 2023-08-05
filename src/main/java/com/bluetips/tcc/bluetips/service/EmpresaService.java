@@ -73,10 +73,11 @@ public class EmpresaService {
 	
 	public EmpresaEntity atualizaEmpresa(String id, CriaEmpresaRequest request) {
 		
-		EmpresaEntity empresaEntity = new EmpresaEntity();
-		
-		empresaEntity.setId(id);
-		
+		Optional<EmpresaEntity> procurado = empresaRepository.findById(id);
+		if(!procurado.isPresent()){
+			return null;
+		}
+		EmpresaEntity empresaEntity = procurado.get();
 		empresaEntity.setNome(request.getNome());
 		empresaEntity.setCnpj(request.getCnpj());
 		empresaEntity.setPorte(request.getPorte());
@@ -91,7 +92,9 @@ public class EmpresaService {
 		empresaEntity.setUf(request.getUf());
 		empresaEntity.setCidade(request.getCidade());
 		empresaEntity.setStatus_empresa(request.getStatus_empresa());
-
+		if(request.getFotoBase64() != null && !request.getFotoBase64().equals("")) {
+			empresaEntity.setFotoBase64(request.getFotoBase64());
+		}
 		//sempre vai ATUALIZAR pq estamos recebendo um ID por paramentro
 		EmpresaEntity saved = empresaRepository.save(empresaEntity);
 		
