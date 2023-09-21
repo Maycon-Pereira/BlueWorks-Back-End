@@ -52,6 +52,11 @@ public class CriaEmpresaRequest {
 	//status atual da entidade
 	private String status_empresa;
 	
+	private int qtdVagasCadastradas = 0;
+	
+	private int qtdCandidatosVaga = 0;
+	
+	
 	@Lob
 	private String fotoBase64;
 	
@@ -148,6 +153,20 @@ public class CriaEmpresaRequest {
 	public void setStatus_empresa(String status_empresa) {
 		this.status_empresa = status_empresa;
 	}
+	public int getQtdVagasCadastradas() {
+		return qtdVagasCadastradas;
+	}
+	public void setQtdVagasCadastradas(int qtdVagasCadastradas) {
+		this.qtdVagasCadastradas = qtdVagasCadastradas;
+	}
+	public int getQtdCandidatosVaga() {
+		return qtdCandidatosVaga;
+	}
+	public void setQtdCandidatosVaga(int qtdCandidatosVaga) {
+		this.qtdCandidatosVaga = qtdCandidatosVaga;
+	}
+	
+	
 	
 
 }

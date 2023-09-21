@@ -57,6 +57,12 @@ public class EmpresaEntity {
 	@Column(name="status_empresa")
 	private String status_empresa;
 	
+	@Column(name="qtd_vagas_cadastradas")
+	private int qtdVagasCadastradas = 0;
+	
+	@Column(name="qtd_candidatos_vaga")
+	private int qtdCandidatosVaga = 0;
+	
 	@Lob
 	@Column(name="foto")
 	private String fotoBase64;
@@ -158,6 +164,18 @@ public class EmpresaEntity {
 	}
 	public void setStatus_empresa(String status_empresa) {
 		this.status_empresa = status_empresa;
+	}
+	public int getQtdVagasCadastradas() {
+		return qtdVagasCadastradas;
+	}
+	public void setQtdVagasCadastradas(int qtdVagasCadastradas) {
+		this.qtdVagasCadastradas = qtdVagasCadastradas;
+	}
+	public int getQtdCandidatosVaga() {
+		return qtdCandidatosVaga;
+	}
+	public void setQtdCandidatosVaga(int qtdCandidatosVaga) {
+		this.qtdCandidatosVaga = qtdCandidatosVaga;
 	}
 	
 	
