@@ -94,6 +94,8 @@ public class EmpresaService {
 		empresaEntity.setUf(request.getUf());
 		empresaEntity.setCidade(request.getCidade());
 		empresaEntity.setStatus_empresa(request.getStatus_empresa());
+		empresaEntity.setQtdVagasCadastradas(request.getQtdVagasCadastradas());
+		empresaEntity.setQtdCandidatosVaga(request.getQtdCandidatosVaga());
 		if(request.getFotoBase64() != null && !request.getFotoBase64().equals("")) {
 			empresaEntity.setFotoBase64(request.getFotoBase64());
 		}
