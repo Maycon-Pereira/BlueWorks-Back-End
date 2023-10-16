@@ -9,7 +9,7 @@ import javax.persistence.Lob;
 public class EmpresaEntity {
 
 	@Id
-	@Column(name="id")
+	@Column(name = "id", columnDefinition = "text")
 	private String id;
 	
 	@Column(name="nome")

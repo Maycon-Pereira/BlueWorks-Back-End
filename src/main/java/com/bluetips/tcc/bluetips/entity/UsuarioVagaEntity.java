@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class UsuarioVagaEntity {
 
 	@Id
-	@Column(name="id")
+	@Column(name = "id", columnDefinition = "text")
 	private String id;
 	
 	@Column(name="data_candidatura")
