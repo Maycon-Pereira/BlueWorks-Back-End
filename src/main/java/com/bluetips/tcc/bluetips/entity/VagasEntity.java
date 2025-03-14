@@ -9,7 +9,7 @@ import javax.persistence.Lob;
 public class VagasEntity {
 	
 	@Id
-	@Column(name = "id", columnDefinition = "text")
+	@Column(name = "id")
 	private String id;
 	
 	@Column(name="nome")
